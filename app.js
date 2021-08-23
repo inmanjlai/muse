@@ -35,6 +35,7 @@ app.use(
 // create Session table if it doesn't already exist
 store.sync();
 
+//testing
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
