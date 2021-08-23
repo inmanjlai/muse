@@ -4,5 +4,28 @@ html
       block head
         title="Express Starter App"
         link(rel='stylesheet' href='/stylesheets/reset.css')
+
   body
-    block content
+
+    nav#nav-bar
+      a#nav-home-link(href='/')
+        img#nav-logo(src="/images/image.png", alt="")
+      div#search-div
+        form#search-form(autocomplete='off')
+          input#search-bar(type='text' name='searchQuery' placeholder='Search here...')
+      if locals.authenticated
+        div#nav-auth
+          span#nav-greeting Welcome, #{locals.user.username}
+          a(href='/users/logout') Logout
+      else
+        div#nav-auth
+          a(href='/login') Login
+          a(href='/signup') Sign Up
+          a(href='/demo') Demo User
+    div.body-container
+      div.sidenav
+        a(class='homebtn', href='/') Home
+        a(class='questionbtn', href='/questions') Questions
+
+      div#content
+        block content
