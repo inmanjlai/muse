@@ -7,5 +7,8 @@ append head
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
-  h1= title
-  p Welcome to your Project Skeleton
+  div#index-page
+    h1#splash-header.splash= title
+    p#splash-greeting.splash Welcome to Muse
+    a#most-popular.splash(href="/login") Get Started!
+    img#splash-img(src='/images/home.jpeg')
