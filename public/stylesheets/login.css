@@ -88,6 +88,10 @@ body {
 
 .form-group {
     padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .form-group label {
@@ -101,23 +105,63 @@ body {
     border-bottom: 1px solid darkgray;
     padding: 5px 0;
     padding-top: 15px;
+    margin-bottom: 1rem;
 }
 
 .form-group input[type="text"]:focus-visible {
     outline: none;
 }
 
+.form-group input[type="password"] {
+    border: none;
+    border-bottom: 1px solid darkgray;
+    padding: 5px 0;
+    padding-top: 15px;
+    margin-bottom: 1rem;
+}
+
+.form-group input[type="password"]:focus-visible {
+    outline: none;
+}
+
+.form-group input[type="email"] {
+    border: none;
+    border-bottom: 1px solid darkgray;
+    padding: 5px 0;
+    padding-top: 15px;
+    margin-bottom: 1rem;
+}
+
+.form-group input[type="email"]:focus-visible {
+    outline: none;
+}
+
 .form-button {
+    display: flex;
     border: none;
     background: rgb(131,73,131);
     background: linear-gradient(0deg, rgba(131,73,131,1) 0%, rgba(254,153,255,1) 100%);
     padding: 0.7rem 2rem;
-    margin-top: 3rem;
+    width: 100%;
+    margin: 1rem;
     border-radius: 50px;
     color: white;
     font-weight: bold;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.form-button:hover {
+    background: rgb(173,245,238);
+    background: linear-gradient(180deg, rgba(173,245,238,1) 0%, rgba(16,195,117,1) 100%);
 }
 
 body {
     background-color: linear-gradient();
+}
+
+.signup {
+    color: rgb(59, 112, 192);
+    margin-top: 2rem;
+    margin-bottom:2rem;
 }

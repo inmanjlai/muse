@@ -13,7 +13,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.get("/login", csrfProtection, async(req, res) => {
-  res.render("login", { csrfToken: req.csrfToken()})
+  res.render("login", { csrfToken: req.csrfToken() })
+})
+
+router.get("/signup", csrfProtection, async(req, res) => {
+  res.render("signup", { csrfToken: req.csrfToken() })
 })
 
 router.post("/login", csrfProtection, async(req, res) => { 
