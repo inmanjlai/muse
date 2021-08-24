@@ -8,11 +8,13 @@
     padding: 1rem;
     background-color: rgba(60,60,60,1);
     align-items: center;
-    justify-items: center;
+    justify-items: start;
     border-bottom: 3px solid violet;
+    align-content: center;
 }
 
 .logo {
+    margin-left: 2rem;
     font-size: 2rem;
     font-family: 'Sarina', cursive;
     color: violet;
@@ -56,8 +58,9 @@
 #nav-auth {
     grid-area: auth;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-end;
     align-items: center;
+    gap: 2rem;
 }
 
 .loginButton, .signupButton, .logoutButton {
