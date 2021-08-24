@@ -5,10 +5,14 @@ block content
             div.form-container
                 form(action="/users/login", method="post")
                     h2 Log In
+                    if(errors)
+                        ul
+                            each error in errors
+                                li= error
                     input(type="hidden", name="_csrf", value=csrfToken)
                     .form-group
                         input.form-control(type= "text", id = 'username', name= 'username' placeholder ='Enter Username')
-                        input.form-control(type= "password", id = 'password', name= 'password' placeholder = 'Enter Password') 
+                        input.form-control(type= "password", id = 'password', name= 'password' placeholder = 'Enter Password')
                         input.form-button(type="submit" value='Log In')
                         button.form-button(type: "button") Demo
-                        a(href="/users/signup").signup Haven't signed up yet?   
+                        a(href="/users/signup").signup Haven't signed up yet?
