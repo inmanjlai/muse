@@ -1,5 +1,5 @@
-# Welcome to GoodGames!
-
+# Welcome to Muse!
+   
 Muse is a web application that serves as a question and answer fourm based around the world of music. This project is inspired by [Quora](https://www.quora.com/), a website that allows users to answer, comment, and ask questions on a variety of topics.       
 
 
