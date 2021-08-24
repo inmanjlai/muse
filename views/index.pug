@@ -2,7 +2,7 @@ extends layout
 
 append head
   //- add page specific styles by appending to the head
-  link(rel="stylesheet" href="/stylesheets/index.css")
+  link(rel="stylesheet" href="/stylesheets/home.css")
   //- add page specific js
   script(src="/javascripts/index.js" type="module" defer)
 
@@ -10,5 +10,5 @@ block content
   div#index-page
     h1#splash-header.splash= title
     p#splash-greeting.splash Welcome to Muse
-    a#most-popular.splash(href="/login") Get Started!
+    a#most-popular.splash(href="/users/login") Get Started!
     img#splash-img(src='/images/home.jpeg')
