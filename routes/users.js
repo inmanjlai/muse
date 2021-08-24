@@ -3,21 +3,21 @@ var router = express.Router();
 const csrf = require("csurf");
 const csrfProtection = csrf({cookie: true});
 const bcrypt = require("bcryptjs")
-// const session = require('express-session');
-// const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
 
 const { User } = require("../db/models");
-// const { secret } = require('../config');
+const { secret } = require('../config');
 const { restoreUser, requireAuth } = require('./auth');
 
 
-// router.use(cookieParser(secret));
-// router.use(session({
-//   name: 'Session.sid',
-//   secret: secret,
-//   resave: false,
-//   saveUninitialized: false
-// }))
+router.use(cookieParser(secret));
+router.use(session({
+  name: 'Session.sid',
+  secret: secret,
+  resave: false,
+  saveUninitialized: false
+}))
 
 router.use(restoreUser);
 
@@ -27,7 +27,8 @@ const asyncHandler = (handler) => (req, res, next) => handler(req, res, next).ca
   // THIS WILL BE CALLED ONCE WE VALIDATE THE USER
     // CREATES AN AUTH KEY IN THE SESSION WHERE WE CAN STORE THE USER ID
 const loginUser = async(req, res, user) => {
-  req.session.auth = { userId: user.id}
+    req.session.auth = { userId: user.id}
+    console.log(req.session, "<-----")
 }
   // DELETES THE AUTH KEY IN THE SESSION TO LOG THE USER OUT
 const logoutUser = async(req, res) => {
@@ -35,8 +36,12 @@ const logoutUser = async(req, res) => {
 }
 // **GET ALL USERS**
 router.get('/', asyncHandler(async(req, res) => {
-  const users = await User.findAll();
-  res.render("users", { users })
+
+  if(req.session.auth){
+    const users = await User.findAll();
+    return res.render("users", { users })
+  }
+  res.redirect("/users/login");
 }));
 
 // **GET SIGN IN PAGE**
@@ -60,7 +65,8 @@ router.post("/login", csrfProtection, asyncHandler(async(req, res) => {
       // IF THE COMPARE METHOD EVALUATES TO TRUE
         // WE LOG IN THE USER AND REDIRECT TO /USERS
   if(isValid) {
-    loginUser(user)
+    loginUser(req, res, user)
+    console.log("------->", user.id)
     res.redirect("/users")
   }
 }))
@@ -80,9 +86,9 @@ router.post("/signup", csrfProtection, asyncHandler(async(req, res) => {
 }))
 
 // **ROUTE TO LOG OUT**
-router.get("/logout", asyncHandler(async(req, res) => {
-  logoutUser();
-  res.redirect("/users/login");
+router.get("/logout", requireAuth, asyncHandler(async(req, res) => {
+  logoutUser(req, res);
+  res.redirect("/");
 }));
 
 module.exports = router;
