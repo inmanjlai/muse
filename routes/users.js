@@ -3,9 +3,11 @@ var router = express.Router();
 const csrf = require("csurf");
 const csrfProtection = csrf({cookie: true});
 const bcrypt = require("bcryptjs")
+const { userValidators, loginValidators, handleValidationErrors} = require("./utils");
 
 const { User } = require("../db/models");
 const { restoreUser, requireAuth } = require('./auth');
+const { validationResult } = require('express-validator');
 
 // **ROUTER MIDDLEWARE**
 router.use(express.urlencoded({extended: false}));
@@ -41,9 +43,18 @@ router.get("/signup", csrfProtection, asyncHandler(async(req, res) => {
 }))
 
 // **ROUTE TO LOG IN**
-router.post("/login", csrfProtection, asyncHandler(async(req, res) => { 
+router.post("/login", loginValidators, csrfProtection, asyncHandler(async(req, res) => {
   // MAKE A QUERY TO OUR DATABASE TO FIND A USER WITH THE SUPPLIED USERNAME
-  const user = await User.findOne({where: {username: req.body.username}})
+
+  const validationErrors = validationResult(req);
+
+  let errors = validationErrors.array().map((error) => error.msg)
+
+  const user = await User.findOne({where: {username: req.body.username}});
+
+  if (user === null) {
+    res.render("login", { csrfToken: req.csrfToken(), errors});
+  }
     // USE BCRYPT'S COMPARE METHOD TO CHECK IF THE SUPPLIED PASSWORD IS THE SAME
     // -> AS THE HASHED PASSWORD WE HAVE STORED IN THE DATABASE
   const isValid = await bcrypt.compare(req.body.password, user.hashedPassword);
@@ -54,10 +65,18 @@ router.post("/login", csrfProtection, asyncHandler(async(req, res) => {
     loginUser(req, res, user)
     res.redirect("/users")
   }
-}))
+}));
 
 // **ROUTE TO SIGN UP**
-router.post("/signup", csrfProtection, asyncHandler(async(req, res) => {
+router.post("/signup", userValidators, csrfProtection, asyncHandler(async(req, res) => {
+  const validationErrors = validationResult(req);
+
+  let errors = validationErrors.array().map((error) => error.msg);
+
+  if (errors) {
+    return res.render("signup", { csrfToken: req.csrfToken(), errors });
+  }
+
   // WE TAKE THE PASSWORD FROM THE REQUEST BODY AND HASH IT
   const hash = await bcrypt.hash(req.body.password, 10);
     // WE THEN CREATE A NEW USER STORING THE HASHED PASSWORD IN OUR DB FOR SECURITY
@@ -67,8 +86,9 @@ router.post("/signup", csrfProtection, asyncHandler(async(req, res) => {
     email: req.body.email,
     avatar: req.body.avatar
   })
+
   res.redirect("/")
-}))
+}));
 
 // **ROUTE TO LOG OUT**
 router.get("/logout", requireAuth, asyncHandler(async(req, res) => {
