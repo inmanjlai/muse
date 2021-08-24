@@ -3,23 +3,9 @@ var router = express.Router();
 const csrf = require("csurf");
 const csrfProtection = csrf({cookie: true});
 const bcrypt = require("bcryptjs")
-const session = require('express-session');
-const cookieParser = require('cookie-parser');
 
 const { User } = require("../db/models");
-const { secret } = require('../config');
 const { restoreUser, requireAuth } = require('./auth');
-
-
-router.use(cookieParser(secret));
-router.use(session({
-  name: 'Session.sid',
-  secret: secret,
-  resave: false,
-  saveUninitialized: false
-}))
-
-router.use(restoreUser);
 
 // **ROUTER MIDDLEWARE**
 router.use(express.urlencoded({extended: false}));
@@ -66,7 +52,6 @@ router.post("/login", csrfProtection, asyncHandler(async(req, res) => {
         // WE LOG IN THE USER AND REDIRECT TO /USERS
   if(isValid) {
     loginUser(req, res, user)
-    console.log("------->", user.id)
     res.redirect("/users")
   }
 }))

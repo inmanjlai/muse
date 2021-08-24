@@ -6,25 +6,29 @@ html
         link(rel='stylesheet' href='/stylesheets/reset.css')
         link(rel="stylesheet", href="/stylesheets/login.css")
         link(rel="stylesheet", href="/stylesheets/index.css")
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Sarina&display=swap" rel="stylesheet">
   body
 
     nav#nav-bar
       a#nav-home-link(href='/')
         img#nav-logo(src="/images/image.png", alt="")
+        h1:a(href="/").logo Muse.
       div#search-div
-        form#search-form(autocomplete='off')
-          input#search-bar(type='text' name='searchQuery' placeholder='Search here...')
+        //- form#search-form(autocomplete='off')
+        input#search-bar(type='text' name='searchQuery' placeholder='Search here...')
       if locals.authenticated
         div#nav-auth
           span#nav-greeting Welcome, #{locals.user.username}
           a(href='/users/logout') Logout
       else
         div#nav-auth
-          a(href='/users/login') Login
-          a(href='/users/signup') Sign Up
-          a(href='/demo') Demo User
+          a(href='/users/login').loginButton Login
+          a(href='/users/signup').signupButton Sign Up
+          //- a(href='/demo') Demo User
     div.body-container
-      div.sidenav
+      //- div.sidenav
         a(class='homebtn', href='/') Home
         a(class='questionbtn', href='/questions') Questions
 
