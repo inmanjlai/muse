@@ -1,3 +1,20 @@
 h1 {
     color: #555555;
 }
+
+.user-card {
+    margin: 1rem;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10%;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-card img {
+    border-radius: 10%;
+    width: 100px;
+}

@@ -5,7 +5,7 @@ html
         title="Express Starter App"
         link(rel='stylesheet' href='/stylesheets/reset.css')
         link(rel="stylesheet", href="/stylesheets/login.css")
-
+        link(rel="stylesheet", href="/stylesheets/index.css")
   body
 
     nav#nav-bar
@@ -20,8 +20,8 @@ html
           a(href='/users/logout') Logout
       else
         div#nav-auth
-          a(href='/login') Login
-          a(href='/signup') Sign Up
+          a(href='/users/login') Login
+          a(href='/users/signup') Sign Up
           a(href='/demo') Demo User
     div.body-container
       div.sidenav
