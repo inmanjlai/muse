@@ -11,7 +11,7 @@ body {
     background: linear-gradient(138deg, rgba(173,204,245,1) 0%, rgba(254,153,255,1) 100%);
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 10% 80%;
+    grid-template-rows: 8% 92%;
     grid-template-areas:
     "navbar"
     "main";
@@ -28,6 +28,17 @@ body {
     background-color: rgba(60,60,60,1);
     align-items: center;
     justify-items: center;
+    border-bottom: 3px solid violet;
+}
+
+.logo {
+    font-size: 2rem;
+    font-family: 'Sarina', cursive;
+    color: violet;
+}
+
+#nav-bar a {
+ text-decoration: none;
 }
 
 #nav-home-link {
@@ -38,11 +49,23 @@ body {
     grid-area: search;
 }
 
+#search-div, #nav-auth {
+    width: 100%;
+}
+
+#search-div {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #search-bar {
     padding: 0.4rem 1rem;
     border-radius: 50px;
     border: none;
     width: 100%;
+    height: 100%;
 }
 
 #search-bar:focus-visible {
@@ -51,15 +74,23 @@ body {
 
 #nav-auth {
     grid-area: auth;
+    display: flex;
+    justify-content: space-evenly;
 }
 
-#nav-auth a {
+.loginButton, .signupButton {
+    font-size: 12px;
     text-decoration: none;
-    background-color: rgba(190, 65, 190, 1);
     padding: 0.7rem 1rem;
-    border-radius: 50px;
-    color: white;
+    border-radius: 5px;
+    color: violet;
     font-weight: bold;
+    border: 2px solid violet;
+}
+
+.loginButton { 
+    color: #464646;
+    background-color: violet;
 }
 
 .main-container {
