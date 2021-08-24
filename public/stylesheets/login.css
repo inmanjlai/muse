@@ -72,6 +72,7 @@ body {
 }
 
 .form-container {
+    width: 40%;
     margin: 1rem;
     padding: 4rem;
     background-color: white;
@@ -92,6 +93,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    flex-basis: 1;
 }
 
 .form-group label {
@@ -148,7 +150,6 @@ body {
     color: white;
     font-weight: bold;
     justify-content: center;
-    transition: 0.3s;
 }
 
 .form-button:hover {

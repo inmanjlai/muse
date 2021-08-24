@@ -1,0 +1,6 @@
+extends layout.pug 
+block content 
+    each user in users
+        .user-card
+            img(src=user.avatar, alt="imgHere")
+            h3= user.username
