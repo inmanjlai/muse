@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     Question.belongsTo(models.User, { foreignKey: "user_id" });
-    Question.hasMany(models.Answer, { foreignKey: "question_id" });
+    Question.hasMany(models.Answer, { foreignKey: 'question_id', onDelete: 'CASCADE', hooks: true});
     Question.hasMany(models.QVote, { foreignKey: "question_id" });
     Question.belongsToMany(models.Tag, columnMapping);
   };

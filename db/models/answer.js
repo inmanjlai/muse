@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     Answer.belongsTo(models.User, { foreignKey: "user_id" });
     Answer.belongsTo(models.Question, { foreignKey: "question_id" });
     Answer.hasMany(models.AVote, { foreignKey: "answer_id" });
-    Answer.hasMany(models.AComment, { foreignKey: "answer_id" });
+    Answer.hasMany(models.AComment, { foreignKey: 'answer_id', onDelete: 'CASCADE', hooks: true});
   };
   return Answer;
 };
