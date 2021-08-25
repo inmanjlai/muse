@@ -72,22 +72,23 @@ router.post("/signup", userValidators, csrfProtection, asyncHandler(async(req, r
   const validationErrors = validationResult(req);
 
   let errors = validationErrors.array().map((error) => error.msg);
+  console.log(errors)
 
-  if (errors) {
+  if (errors.length) {
     return res.render("signup", { csrfToken: req.csrfToken(), errors });
   }
 
   // WE TAKE THE PASSWORD FROM THE REQUEST BODY AND HASH IT
   const hash = await bcrypt.hash(req.body.password, 10);
     // WE THEN CREATE A NEW USER STORING THE HASHED PASSWORD IN OUR DB FOR SECURITY
-  await User.create({
+  const user = await User.create({
     username: req.body.username,
     hashedPassword: hash,
     email: req.body.email,
     avatar: req.body.avatar
   })
 
-  res.redirect("/")
+  res.redirect("/");
 }));
 
 // **ROUTE TO LOG OUT**
