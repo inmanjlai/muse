@@ -6,19 +6,29 @@ append head
 
 block content
     div#questions-page
-        h1#question-page-header Most Popular Questions
+        h1#question-page-header Questions
         if locals.authenticated
           a#new-question-button(href="/questions/new") Ask a Question
         else
           a#no-question-button(href="/users/login") Login to Ask a Question
         each question in questions
-          each answer in question.Answers
-            div.question-card-container
-              div.question-card
-                a(href=`/users/${question.user_id}`).question-user= `${question.User.username} wants to know `
-                a(href=`/questions/${question.id}`).question-title= question.title
-                p= answer.answer
-              .answer-bar 
-                button= `🔼 ${answer.votes}`
-                button 🔽
-                button 💬
+            if question.Answers.length
+                each answer in question.Answers
+                     div.question-card-container
+                        div.question-card
+                            a(href=`/users/${question.user_id}`).question-user= `${question.User.username} wants to know `
+                            a(href=`/questions/${question.id}`).question-title= question.title
+                            p= answer.answer
+                        .answer-bar
+                            button= `🔼 ${answer.votes}`
+                            button 🔽
+                            button 💬
+            else
+                div.question-card-container
+                    div.question-card
+                        a(href=`/users/${question.user_id}`).question-user= `${question.User.username} wants to know `
+                        a(href=`/questions/${question.id}`).question-title= question.title
+                    .answer-bar
+                        button 🔼
+                        button 🔽
+                        button 💬
