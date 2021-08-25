@@ -10,11 +10,11 @@ router.post('/', requireAuth, asyncHandler(async(req, res, next) => {
     const answer = await Answer.create({
         answer: req.body.answer,
         votes: 1,
-        question_id: req.body.question-id,
+        question_id: req.body.id,
         user_id: res.locals.user.id
     });
 
-    res.redirect(`/questions/${req.body.question-id}`);
+    res.redirect(`/questions/${req.body.id}`);
 }));
 
 

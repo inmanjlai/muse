@@ -17,7 +17,7 @@ block content
                 summary Answer this question
                 form(method="post" action="/answers")
                     label Answer
-                    input(type="hidden" name="question-id" value=question.id)
+                    input(type="hidden" name="id" value=question.id)
                     textarea(name="answer")
                     button(type="submit") Submit
             if !locals.authenticated
