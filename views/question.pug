@@ -3,50 +3,47 @@ extends layout
 
 append head
     script(src="/javascripts/question.js" type="module" defer)
+    link(rel="stylesheet", href="/stylesheets/question.css")
+    link(rel="stylesheet", href="/stylesheets/questions.css")
 
 block content
     div#question-page
         div#individual-question
-            textarea#question-title-editor(name="questionTitleEditor")
             h1#question-title= `Title: ${question.title}`
-            textarea#question-details-editor(name="questionDetailsEditor")
             h1#question-details= `Details: ${question.details}`
-            if userId === 0
+            if !locals.authenticated
                 a#interact-with-question-button(href="/users/login") Login to Interact with this Question
             if isMyQuestion
                 a#question-edit-link(href=`/questions/${question.id}/edit`) Edit this question
                 a#question-delete-link(href=`/questions/${question.id}/delete`) Delete this question
-                a#question-done-editing-link(href=`/questions/${question.id}/edit`) Done Editing Question
             ul#answer-list
-                each answer in answers
+                each answer in question.Answers
                     div#question-answers
-                        textarea.answer-details-editor(name="answerEditor")
                         h2.answer-details= `${answer.answer}`
-                            if(userId === answer.user_id)
-                                a.answer-edit-link(href=`/answers/${answer.id}/edit`) Edit this Answer
-                                a.answer-delete-link(href=`/answers/${answer.id}/delete`) Delete this Answer
-                                a.answer-done-editing-link(href=`/answers/${answer.id}`) Done Editing Answer
-                            h1
-                            ul#answer-comment-list
-                                each aComment in answer.AnswerComments
-                                    li.question-comment-li
-                                        textarea.comment-details-editor(name="commentDetailsEditor")
-                                        h4= `${aComment.comment} --- ${aComment.User.username}`
-                                            if(userId === aComment.user_id)
-                                                a.comment-editor(href=`/comments/a/${aComment.id}/edit`) Edit this comment
-                                                a.comment-delete(href=`/comments/a/${aComment.id}/delete`) Delete this comment
-                                                a.comment-done-editing-link(href=`/comments/a/${aComment.id}`) Done Editing Comment
-                            form(class='new-answer-comment' method='post' action=`/answers/${answer.id}/comments`)
-                                input(type='hidden' name= '_csrf' value= csrfToken)
-                                +field('', 'comment', '', 'textarea', true)
-                                if userId !== 0
-                                    button.add-comment-button(type='submit') Add A Comment
-        div#new-answer
-            if userId !== 0
-                h2 Your Answer
-                    form(id='new-answer' method='post' action=`/questions/${question.id}/answers`)
-                        input(type='hidden' name= '_csrf' value= csrfToken)
-                        +field('', 'answer', '', 'textarea', true)
-                        button(type='submit') Post Your Answer
-        div#home-div
-            a#back-home(href="/questions") Back to all questions
+        //-                     if(locals.user.id === answer.user_id)
+        //-                         a.answer-edit-link(href=`/answers/${answer.id}/edit`) Edit this Answer
+        //-                         a.answer-delete-link(href=`/answers/${answer.id}/delete`) Delete this Answer
+
+        //-                 ul#answer-comment-list
+        //-                     each aComment in answer.AnswerComments
+        //-                         li.question-comment-li
+        //-                             textarea.comment-details-editor(name="commentDetailsEditor")
+        //-                             h4= `${aComment.comment} --- ${aComment.User.username}`
+        //-                                 if(userId === aComment.user_id)
+        //-                                     a.comment-editor(href=`/comments/a/${aComment.id}/edit`) Edit this comment
+        //-                                     a.comment-delete(href=`/comments/a/${aComment.id}/delete`) Delete this comment
+        //-                                     a.comment-done-editing-link(href=`/comments/a/${aComment.id}`) Done Editing Comment
+        //-                     form(class='new-answer-comment' method='post' action=`/answers/${answer.id}/comments`)
+        //-                         input(type='hidden' name= '_csrf' value= csrfToken)
+        //-                         +field('', 'comment', '', 'textarea', true)
+        //-                         if userId !== 0
+        //-                             button.add-comment-button(type='submit') Add A Comment
+        //- div#new-answer
+        //-     if userId !== 0
+        //-         h2 Your Answer
+        //-             form(id='new-answer' method='post' action=`/questions/${question.id}/answers`)
+        //-                 input(type='hidden' name= '_csrf' value= csrfToken)
+        //-                 +field('', 'answer', '', 'textarea', true)
+        //-                 button(type='submit') Post Your Answer
+        //- div#home-div
+        //-     a#back-home(href="/questions") Back to all questions

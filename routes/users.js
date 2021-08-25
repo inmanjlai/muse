@@ -16,11 +16,16 @@ const asyncHandler = (handler) => (req, res, next) => handler(req, res, next).ca
     // CREATES AN AUTH KEY IN THE SESSION WHERE WE CAN STORE THE USER ID
 const loginUser = async(req, res, user) => {
     req.session.auth = { userId: user.id}
-    console.log(req.session, "<-----")
+    req.session.save( () => {
+      res.redirect("/questions")
+    })
 }
   // DELETES THE AUTH KEY IN THE SESSION TO LOG THE USER OUT
 const logoutUser = async(req, res) => {
   delete req.session.auth;
+  req.session.save( ()=> {
+    res.redirect("/users/login");
+  })
 }
 // **GET ALL USERS**
 router.get('/', asyncHandler(async(req, res) => {
@@ -62,8 +67,7 @@ router.post("/login", loginValidators, csrfProtection, asyncHandler(async(req, r
       // IF THE COMPARE METHOD EVALUATES TO TRUE
         // WE LOG IN THE USER AND REDIRECT TO /USERS
   if(isValid) {
-    loginUser(req, res, user)
-    res.redirect("/users")
+    await loginUser(req, res, user)
   }
 }));
 
@@ -93,8 +97,8 @@ router.post("/signup", userValidators, csrfProtection, asyncHandler(async(req, r
 
 // **ROUTE TO LOG OUT**
 router.get("/logout", requireAuth, asyncHandler(async(req, res) => {
-  logoutUser(req, res);
-  res.redirect("/");
+  await logoutUser(req, res);
+  // res.redirect("/");
 }));
 
 module.exports = router;

@@ -27,9 +27,5 @@ html
         div#nav-auth
           a(href='/users/login').loginButton Login
           a(href='/users/signup').signupButton Sign Up
-          //- a(href='/demo') Demo User
-    //- div.body-container
-      //- div.sidenav
-        a(class='homebtn', href='/') Home
-        a(class='questionbtn', href='/questions') Questions
-    block content
+    .body-container
+      block content
