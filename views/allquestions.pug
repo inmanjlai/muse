@@ -12,7 +12,13 @@ block content
         else
           a#no-question-button(href="/users/login") Login to Ask a Question
         each question in questions
-          div.question-card
-            a(href=`/questions/${question.id}`)= question.title
-            each answer in question.Answers
-              p= answer.answer
+          each answer in question.Answers
+            div.question-card-container
+              div.question-card
+                a(href=`/users/${question.user_id}`).question-user= `${question.User.username} wants to know `
+                a(href=`/questions/${question.id}`).question-title= question.title
+                p= answer.answer
+              .answer-bar 
+                button= `🔼 ${answer.votes}`
+                button 🔽
+                button 💬

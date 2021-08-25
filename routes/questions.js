@@ -8,14 +8,20 @@ const { requireAuth } = require('./auth');
 //this views all the questions on question page
 router.get('/', asyncHandler(async(req, res, next) => {
     const questions = await Question.findAll({
-        include: { 
-            model: Answer,
-            order: [['votes', 'DESC']],
-            limit: 1
-        },
+        include: [
+            {
+                model: Answer,
+                order: [['votes', 'DESC']],
+                limit: 1
+            },
+            {
+                 model: User
+             }
+            ],
         order: [['votes', 'DESC']],
     })
-    // console.log(questions, "<----------------------------------")
+
+    console.log(questions, "<----------------------------------")
     // if(res.locals.user) {
     //     res.render(questions, user_id: res.locals.user.id)
     // }
@@ -41,7 +47,7 @@ router.post('/', requireAuth, asyncHandler(async(req, res, next) => {
 }))
 
 router.get('/:id(\\d+)/', asyncHandler(async(req, res, next) => {
-    const question = await Question.findOne({where: { id: req.params.id}, include: Answer})
+    const question = await Question.findOne({where: { id: req.params.id}, include: [{model: Answer, include: User}, {model: User}]})
     res.render('question', { question })
 }))
 

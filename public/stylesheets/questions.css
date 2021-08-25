@@ -1,5 +1,5 @@
 .body-container {
-    background-color: #2e2e2e;
+    background-color: #282a36;
     width: 100%;
     height: 100%;
     display: flex;
@@ -18,34 +18,36 @@
 
 #question-page-header {
     margin: 1rem;
+    margin-bottom: 0rem;
     color: violet;
     font-weight: bold;
 }
 
-.question-card {
-    background-color: #464646;
-    margin: 1rem;
-    padding: 1rem;
+.question-card-container {
+    border: 1px solid #1d1d1d;
+    background-color: #44475a;
+    margin: 0.2rem;
+    /* padding: 1rem; */
     width: 100%;
-    border-radius: 15px;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 2.5px;
+    /* box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2); */
 }
 
-.question-card a {
+.question-title {
     font-size: larger;
     text-decoration: none;
     margin: 1rem 0rem;
     font-weight: bold;
-    color: violet;
+    color: #ff79c6;
 }
 
-.question-card p {
-    margin: 1rem;
-    color: white;
+.question-card-container p {
+    color: #f8f8f2;
 }
 
 #new-question-button, #no-question-button {
     padding: 1rem 1.5rem;
+    margin: 1rem;
     background: rgb(152,251,152);
     background: linear-gradient(125deg, rgba(152,251,152,1) 0%, rgba(16,195,117,1) 100%);
     border-radius: 10px;
@@ -57,4 +59,22 @@
 
 #new-question-button:hover, #no-question-button:hover {
     border-radius: 25px;
+}
+
+.question-card {
+    padding: 1rem;
+}
+
+.question-user {
+    display: block;
+    color: white;
+    text-decoration: none;
+}
+
+.answer-bar {
+    display: flex;
+    /* gap: 1rem; */
+    border-top: 1px solid #1d1d1d;
+    padding: 0.2rem;
+    background-color: #6272a4;
 }
