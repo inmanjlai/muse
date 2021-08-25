@@ -9,8 +9,10 @@ append head
 block content
     div#question-page
         div#individual-question
-            h1#question-title= `Title: ${question.title}`
-            h1#question-details= `Details: ${question.details}`
+            a(href=`/users/${question.user_id}`) 
+            h1#question-title= `${question.title}`
+            p= `Asked by ${question.User.username}`
+            h1#question-details= `${question.details}`
             if !locals.authenticated
                 a#interact-with-question-button(href="/users/login") Login to Interact with this Question
             if isMyQuestion
@@ -19,6 +21,7 @@ block content
             ul#answer-list
                 each answer in question.Answers
                     div#question-answers
+                        p= `Answer by ${answer.User.username}`
                         h2.answer-details= `${answer.answer}`
         //-                     if(locals.user.id === answer.user_id)
         //-                         a.answer-edit-link(href=`/answers/${answer.id}/edit`) Edit this Answer
@@ -35,7 +38,7 @@ block content
         //-                                     a.comment-done-editing-link(href=`/comments/a/${aComment.id}`) Done Editing Comment
         //-                     form(class='new-answer-comment' method='post' action=`/answers/${answer.id}/comments`)
         //-                         input(type='hidden' name= '_csrf' value= csrfToken)
-        //-                         +field('', 'comment', '', 'textarea', true)
+        //-                         +field('' , 'comment', '', 'textarea', true)
         //-                         if userId !== 0
         //-                             button.add-comment-button(type='submit') Add A Comment
         //- div#new-answer
