@@ -2,12 +2,12 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Answer', [
+    return queryInterface.bulkInsert('Answers', [
       {
         answer: "Britney’s handlers are claiming that the sheriff’s office has already assured them that the housekeeper’s claims will go nowhere, which doesn’t sound like the truth.",
         votes: 28,
         question_id: 1,
-        user_id: 2,
+        user_id: 3,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -15,7 +15,7 @@ module.exports = {
         answer: "You might be thinking about Dolphin. The most recent version of this was sung by texts soobin and oh my girls Arin",
         votes: 2,
         question_id: 2,
-        user_id: 2,
+        user_id: 3,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -23,7 +23,7 @@ module.exports = {
         answer: "5. Bubblegum Pop / K(J)-Pop, 4. Electronic / Techno, 3. Heavy Metal / Screamo, 2. Rap / Hip Hop, 1. Country ",
         votes: 7,
         question_id: 3,
-        user_id: 2,
+        user_id: 3,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -31,7 +31,7 @@ module.exports = {
         answer: "Sweet Cherry Wine. Tommy James & Shondells",
         votes: 3,
         question_id: 4,
-        user_id: 2,
+        user_id: 3,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -39,7 +39,7 @@ module.exports = {
         answer: "I think he will",
         votes: 8,
         question_id: 5,
-        user_id: 2,
+        user_id: 3,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -61,6 +61,7 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
+    return queryInterface.bulkDelete('Answers', null, { truncate: true, cascade: true, restartIdentity: true });
     /*
       Add reverting commands here.
       Return a promise to correctly handle asynchronicity.
