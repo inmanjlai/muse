@@ -1,7 +1,8 @@
 extends layout
 
 append head
-  script(src="/javascripts/allquestions.js" type="module" defer)
+  script(src="/javascripts/questions.js" type="module" defer)
+  link(rel="stylesheet", href="/stylesheets/questions.css")
 
 block content
     div#questions-page
@@ -10,8 +11,8 @@ block content
           a#new-question-button(href="/questions/new") Ask a Question
         else
           a#no-question-button(href="/users/login") Login to Ask a Question
-            each question in questions
-              div.question-card
-                h3:a(href=`/questions/${question.id}`)= question.title
-                each answer in question.Answers
-                  p= answer.answer
+        each question in questions
+          div.question-card
+            a(href=`/questions/${question.id}`)= question.title
+            each answer in question.Answers
+              p= answer.answer

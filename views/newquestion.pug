@@ -6,7 +6,8 @@ append head
 
 block content
     form(id='newquestion' method='post' action='/questions')
-        input(type='hidden' name= '_csrf' value= csrfToken)
-        //- +field('Question Title: ', 'title', '', 'text', true)
-        //- +field('Question Details: ', 'details', question.details, 'textarea', true)
+        label(for="title") Question Title 
+        input(type="text" name="title")
+        label(for="details") Write a detail summary of your question
+        textarea(name="details")  
         button(type='submit') Submit!

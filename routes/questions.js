@@ -15,7 +15,7 @@ router.get('/', asyncHandler(async(req, res, next) => {
         },
         order: [['votes', 'DESC']],
     })
-    // console.log(questions[0].Answers[0].answer, "<----------------------------------")
+    // console.log(questions, "<----------------------------------")
     // if(res.locals.user) {
     //     res.render(questions, user_id: res.locals.user.id)
     // }
@@ -38,6 +38,11 @@ router.post('/', requireAuth, asyncHandler(async(req, res, next) => {
         user_id: res.locals.user.id
     })
     res.redirect('/questions')
+}))
+
+router.get('/:id(\\d+)/', asyncHandler(async(req, res, next) => {
+    const question = await Question.findOne({where: { id: req.params.id}, include: Answer})
+    res.render('question', { question })
 }))
 
 //delete a question by id
