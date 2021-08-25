@@ -9,10 +9,17 @@ append head
 block content
     div#question-page
         div#individual-question
-            a(href=`/users/${question.user_id}`) 
+            a(href=`/users/${question.user_id}`)
             h1#question-title= `${question.title}`
             p= `Asked by ${question.User.username}`
             h1#question-details= `${question.details}`
+            details
+                summary Answer this question
+                form(method="post" action="/answers")
+                    label Answer
+                    input(type="hidden" name="question-id" value=question.id)
+                    textarea(name="answer")
+                    button(type="submit") Submit
             if !locals.authenticated
                 a#interact-with-question-button(href="/users/login") Login to Interact with this Question
             if isMyQuestion
