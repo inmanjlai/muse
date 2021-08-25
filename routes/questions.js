@@ -6,15 +6,20 @@ const { asyncHandler, csrfProtection, userValidators, loginValidators, handleVal
 const { requireAuth } = require('./auth');
 
 //this views all the questions on question page
-router.get('/', asyncHandler(async (req, res, next) => {
+router.get('/', asyncHandler(async(req, res, next) => {
     const questions = await Question.findAll({
-        include: Answer,
-        order: [['votes', 'DESC']]
+        include: { 
+            model: Answer,
+            order: [['votes', 'DESC']],
+            limit: 1
+        },
+        order: [['votes', 'DESC']],
     })
+    // console.log(questions[0].Answers[0].answer, "<----------------------------------")
     // if(res.locals.user) {
     //     res.render(questions, user_id: res.locals.user.id)
     // }
-    res.render('questions', { questions })
+    res.render('allquestions', { questions })
 }))
 
 

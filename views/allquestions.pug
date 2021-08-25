@@ -5,22 +5,13 @@ append head
 
 block content
     div#questions-page
-        h1#question-page-header Most Popular App Overload Questions
-        if userId
+        h1#question-page-header Most Popular Questions
+        if locals.authenticated
           a#new-question-button(href="/questions/new") Ask a Question
         else
-          a#no-question-button(href="/login") Login to Ask a Question
-        ul#question-list
+          a#no-question-button(href="/users/login") Login to Ask a Question
             each question in questions
-                li.question-list-item
-                  a(href=`/questions/${question.id}`)= question.title
-                  #question-votes
-                    p= `${question.votes}`
-                    p Votes
-                  #question-answers
-                    if question.Answers
-                      p= `${question.Answers.length}`
-                      p Answers
-                    else
-                      p 0
-                      p Answers
+              div.question-card
+                h3:a(href=`/questions/${question.id}`)= question.title
+                each answer in question.Answers
+                  p= answer.answer
