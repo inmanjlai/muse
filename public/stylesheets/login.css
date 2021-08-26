@@ -140,7 +140,7 @@ footer {
         background-image: url("https://i.imgur.com/C6Vhxim.jpg");
         background-size: cover;
     }
-    
+
     .image-container {
         display: none;
     }
@@ -162,7 +162,7 @@ footer {
     } */
 
     input{
-        color: white;
+        color: black;
     }
 
     /* input:-webkit-autofill

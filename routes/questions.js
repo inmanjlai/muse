@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const { Question, Answer, User } = require('../db/models')//AComment
+const { Question, Answer, User, QTag, Tag } = require('../db/models')//AComment
 const { Op } = require('sequelize')
 const { asyncHandler, csrfProtection, userValidators, loginValidators, handleValidationErrors } = require('./utils');
 const { requireAuth } = require('./auth');
 
-//this views all the questions on question page 
+//this views all the questions on question page
 router.get('/', asyncHandler(async(req, res, next) => {
     const questions = await Question.findAll({
         include: [
@@ -48,12 +48,21 @@ router.post('/', requireAuth, asyncHandler(async(req, res, next) => {
 
 router.get('/:id(\\d+)/', asyncHandler(async(req, res, next) => {
     const question = await Question.findOne({where: { id: req.params.id}, include: [{model: Answer, include: User}, {model: User}]})
+
+    const questionTag = await QTag.findAll({
+        where: {
+            question_id: question.id
+        }
+    });
+
+    const allTags = await Tag.findAll();
+
     let isMyQuestion = false;
     if(question.user_id === res.locals.user.id){
         isMyQuestion = true;
     }
-    console.log(question);
-    res.render('question', { question, isMyQuestion })
+
+    res.render('question', { question, isMyQuestion, questionTag, allTags});
 }))
 
 //delete a question by id

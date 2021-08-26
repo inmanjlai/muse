@@ -1,0 +1,23 @@
+const express = require("express");
+const router = express.Router();
+const { Question, User, Answer, Tag, QTag } = require('../db/models');
+const { asyncHandler } = require("./utils")
+
+router.post('/', asyncHandler(async(req, res) => {
+    const tag = await Tag.create({
+        name: req.body.name
+    });
+
+    const association = await QTag.create({
+        question_id: req.body.id,
+        tag_id: tag.id
+    })
+
+    res.redirect(`/questions/${req.body.id}`);
+}));
+
+
+
+
+
+module.exports = router;
