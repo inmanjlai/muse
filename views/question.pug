@@ -23,8 +23,17 @@ block content
             if !locals.authenticated
                 a#interact-with-question-button(href="/users/login") Login to Interact with this Question
             if isMyQuestion
-                a#question-edit-link(href=`/questions/${question.id}/edit`) Edit this question
-                a#question-delete-link(href=`/questions/${question.id}/delete`) Delete this question
+                details
+                    summary Edit
+                    form(method="post" action=`/questions/${question.id}/edit`)
+                        label Title
+                        input(type="text" name="title")
+                        input(type="hidden" name="id" value=question.id)
+                        label(for="details") Details
+                        textarea(name="details")
+                        button(type="submit" action=`/questions/${question.id}/edit`) Finish edits
+                form(method="post" action=`/questions/${question.id}/delete`)
+                    button(type="submit" action=`/questions/${question.id}/delete`) Delete this question
             ul#answer-list
                 each answer in question.Answers
                     div#question-answers
