@@ -9,6 +9,12 @@ append head
 block content
     div#question-page
         div#individual-question
+            div.tag-list
+                if questionTag
+                    each QTag in questionTag
+                        each tag in allTags
+                            if QTag.tag_id === tag.id
+                                button= tag.name
             a(href=`/users/${question.user_id}`)
             h1#question-title= `${question.title}`
             p= `Asked by ${question.User.username}`
@@ -34,6 +40,13 @@ block content
                         button(type="submit" action=`/questions/${question.id}/edit`) Finish edits
                 form(method="post" action=`/questions/${question.id}/delete`)
                     button(type="submit" action=`/questions/${question.id}/delete`) Delete this question
+                details
+                    summary Tags
+                    form(method="post" action="/tag")
+                        input(type="hidden" name="id" value=question.id)
+                        label(for="name") Enter tag name
+                        input(type="text" name="name" required)
+                        button(type="submit") Submit
             ul#answer-list
                 each answer in question.Answers
                     div#question-answers
@@ -57,12 +70,3 @@ block content
         //-                         +field('' , 'comment', '', 'textarea', true)
         //-                         if userId !== 0
         //-                             button.add-comment-button(type='submit') Add A Comment
-        //- div#new-answer
-        //-     if userId !== 0
-        //-         h2 Your Answer
-        //-             form(id='new-answer' method='post' action=`/questions/${question.id}/answers`)
-        //-                 input(type='hidden' name= '_csrf' value= csrfToken)
-        //-                 +field('', 'answer', '', 'textarea', true)
-        //-                 button(type='submit') Post Your Answer
-        //- div#home-div
-        //-     a#back-home(href="/questions") Back to all questions
