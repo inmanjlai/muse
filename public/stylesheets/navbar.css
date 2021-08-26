@@ -2,7 +2,7 @@
     /* code in here */
     grid-area:navbar;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 20% 60% 20%;
     grid-template-rows: 1fr;
     grid-template-areas: "links search auth";
     padding: 1rem;
@@ -18,6 +18,12 @@
     font-size: 2rem;
     font-family: 'Sarina', cursive;
     color: violet;
+    transition: 0.5s;
+}
+
+.logo:hover {
+    color: palegreen;
+
 }
 
 #nav-bar a {
@@ -36,18 +42,17 @@
     width: 100%;
 }
 
-#search-div {
-    height: 100%;
+#search-form {
     display: flex;
-    align-items: center;
+    width: 100%;
     justify-content: center;
 }
 
 #search-bar {
     padding: 0.4rem 1rem;
-    border-radius: 50px;
+    border-radius: 5px;
     border: none;
-    width: 100%;
+    width: 80%;
     height: 100%;
 }
 
@@ -60,19 +65,28 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    gap: 2rem;
+    gap: 1rem;
 }
 
 .loginButton, .signupButton, .logoutButton {
     font-size: 12px;
     text-decoration: none;
-    padding: 0.7rem 1rem;
+    padding: 0.7rem 0.7rem;
     border-radius: 5px;
     color: violet;
     font-weight: bold;
     border: 2px solid violet;
+    transition: color 0.3s, background-color 0.3s, border-color 0.3s;
 }
 
+.loginButton:hover{    
+    background-color: palegreen;
+    border-color: palegreen;
+}
+.signupButton:hover, .logoutButton:hover {
+    border-color: palegreen;
+    color: palegreen;
+}
 #nav-greeting {
     color: white;
 }

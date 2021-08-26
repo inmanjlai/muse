@@ -16,10 +16,9 @@ html
     nav#nav-bar
       a#nav-home-link(href='/')
         //- img#nav-logo(src="/images/image.png", alt="")
-        h1:a(href="/").logo Muse.
-      div#search-div
-        form#search-form(autocomplete='off' method="post" action="/search")
-          input#search-bar(type='text' name='searchQuery' placeholder='Search here...')
+        h1:a(href="/").logo muse.
+      form#search-form(autocomplete='off' method="post" action="/search")
+        input#search-bar(type='text' name='searchQuery' placeholder='🔎 Search here...')
       if locals.authenticated
         div#nav-auth
           span#nav-greeting Welcome, #{locals.user.username}

@@ -2,6 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
+
     return queryInterface.bulkInsert('Users', [
       {username: 'demo', hashedPassword: '$2a$10$00lDn9RmcvfOP0Gjj06fGut9i4J.VHIMGaHC7yTblQkbyGHiGhguK', email:'demo@demo.com', avatar:'../public/images/defaultuser.png',createdAt: new Date(), updatedAt: new Date()},
       {username: 'Bob', hashedPassword: '$2a$10$SLhQ/bMY71ISdh73fdHS0e0b2UfMCmpSPXc1WqT6Hmz3k4mU2V6tK', email: 'bob@bob.com', avatar:"../public/images/defaultuser.png", createdAt: new Date(), updatedAt: new Date()},
@@ -19,6 +20,7 @@ module.exports = {
       {username: 'Ali', hashedPassword: '$2a$10$bLWiV1mLSeMAOOxuxuC6meblzYspv6UWX63bccBEnGvMbKlcArrta', email:'ali@ali.com', avatar:'../public/images/defaultuser.png', createdAt: new Date(), updatedAt: new Date()},
       {username: 'Happy', hashedPassword: '$2a$10$Lb0iEw6Fa63eRi0sib.Lfe8uTOWWobXPYxM6kSaf8W9m.fHC23IK.', email:'happy@happy.com', avatar:'../public/images/defaultuser.png', createdAt: new Date(), updatedAt: new Date()},
     ], {});
+
     /*
      username: DataTypes.STRING,
     hashedPassword: DataTypes.STRING,
