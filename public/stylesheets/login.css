@@ -8,7 +8,7 @@ body {
     /* width: 100vw; */
     font-family: Arial, Helvetica, sans-serif;
     background: rgb(173,204,245);
-    background: linear-gradient(138deg, rgba(173,204,245,1) 0%, rgba(254,153,255,1) 100%);
+    background: #282a36;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 60px auto 60px;
@@ -26,18 +26,39 @@ body {
     justify-content: center;
     grid-area:main;
 }
-
-.form-container {
-    width: 40%;
-    margin: 1rem;
-    padding: 4rem;
+.middle-section {
+    width: 80%;
+    max-width: 800px;
     background-color: white;
-    border-radius: 50px;
+    border-radius: 10px;
+    display: inline-flex;
+    justify-content: space-around;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: width 1s;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    flex: 1;
+    width: 50%;
+    background-image: url("https://i.imgur.com/C6Vhxim.jpg");
+}
+
+.image-container h1 {
+    font-size: 4rem;
+    color: white;
+    font-family: 'Sarina', cursive;
+}
+.form-container {
+    padding: 4rem;
     display: inline-flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 10px 30px rgba(131,73,131,0.5);
 }
 .form-container h2 {
     margin-bottom: 2rem;
@@ -58,59 +79,44 @@ body {
     font-weight: bold;
 }
 
-.form-group input[type="text"] {
+.form-group input[type="text"], .form-group input[type="email"], .form-group input[type="password"] {
+    background-color: transparent;
     border: none;
-    border-bottom: 1px solid darkgray;
-    padding: 5px 0;
+    border-bottom: 2px solid #777777;
+    padding: 5px 5px;
     padding-top: 15px;
     margin-bottom: 1rem;
 }
 
-.form-group input[type="text"]:focus-visible {
+.form-group input:focus-visible {
     outline: none;
 }
 
-.form-group input[type="password"] {
-    border: none;
-    border-bottom: 1px solid darkgray;
-    padding: 5px 0;
-    padding-top: 15px;
-    margin-bottom: 1rem;
-}
 
-.form-group input[type="password"]:focus-visible {
-    outline: none;
-}
-
-.form-group input[type="email"] {
-    border: none;
-    border-bottom: 1px solid darkgray;
-    padding: 5px 0;
-    padding-top: 15px;
-    margin-bottom: 1rem;
-}
-
-.form-group input[type="email"]:focus-visible {
-    outline: none;
-}
 
 .form-button {
     display: flex;
     border: none;
-    background: rgb(131,73,131);
-    background: linear-gradient(0deg, rgba(131,73,131,1) 0%, rgba(254,153,255,1) 100%);
+    background: rgb(152,251,152);
+    background: linear-gradient(125deg, rgba(152,251,152,1) 0%, rgba(16,195,117,1) 100%);
     padding: 0.7rem 2rem;
     width: 100%;
     margin: 1rem;
-    border-radius: 50px;
+    border-radius: 10px;
     color: white;
     font-weight: bold;
     justify-content: center;
+    transition: border-radius 0.5s;
 }
 
 .form-button:hover {
-    background: rgb(173,245,238);
-    background: linear-gradient(180deg, rgba(173,245,238,1) 0%, rgba(16,195,117,1) 100%);
+
+    border-radius: 25px;
+}
+
+form h2 {
+    font-size: 2rem;
+    text-align: center;
 }
 
 body {
@@ -125,4 +131,47 @@ body {
 
 footer {
     grid-area: footer;
+}
+
+@media screen and (max-width: 1000px) {
+    .middle-section {
+        width: 40%;
+        min-width: 350px;
+        background-image: url("https://i.imgur.com/C6Vhxim.jpg");
+        background-size: cover;
+    }
+    
+    .image-container {
+        display: none;
+    }
+
+    .form-group input[type="text"]::placeholder, .form-group input[type="email"]::placeholder, .form-group input[type="password"]::placeholder {
+        color: white;
+    }
+
+    .form-group input[type="text"], .form-group input[type="email"], .form-group input[type="password"] {
+        border-bottom: 2px solid white;
+
+    }
+
+    /* input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        transition: background-color 5000s;
+    } */
+
+    input{
+        color: white;
+    }
+
+    /* input:-webkit-autofill
+    {
+        -webkit-text-fill-color: white !important;
+    } */
+
+    form h2 {
+        color: white;
+    }
+
 }
