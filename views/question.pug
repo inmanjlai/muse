@@ -14,39 +14,40 @@ block content
                     each QTag in questionTag
                         each tag in allTags
                             if QTag.tag_id === tag.id
-                                button= tag.name
+                                button.tag= tag.name
             a(href=`/users/${question.user_id}`)
             h1#question-title= `${question.title}`
             p= `Asked by ${question.User.username}`
             h1#question-details= `${question.details}`
-            details
-                summary Answer this question
-                form(method="post" action="/answers")
-                    label Answer
-                    input(type="hidden" name="id" value=question.id)
-                    textarea(name="answer")
-                    button(type="submit") Submit
-            if !locals.authenticated
-                a#interact-with-question-button(href="/users/login") Login to Interact with this Question
-            if isMyQuestion
-                details
-                    summary Edit
-                    form(method="post" action=`/questions/${question.id}/edit`)
-                        label Title
-                        input(type="text" name="title")
+            .user-controls
+                details.answer-question
+                    summary Answer this question
+                    form(method="post" action="/answers").details-inside
+                        label Answer
                         input(type="hidden" name="id" value=question.id)
-                        label(for="details") Details
-                        textarea(name="details")
-                        button(type="submit" action=`/questions/${question.id}/edit`) Finish edits
-                form(method="post" action=`/questions/${question.id}/delete`)
-                    button(type="submit" action=`/questions/${question.id}/delete`) Delete this question
-                details
-                    summary Tags
-                    form(method="post" action="/tag")
-                        input(type="hidden" name="id" value=question.id)
-                        label(for="name") Enter tag name
-                        input(type="text" name="name" required)
+                        textarea(name="answer")
                         button(type="submit") Submit
+                if !locals.authenticated
+                    a#interact-with-question-button(href="/users/login") Login to Interact with this Question
+                if isMyQuestion    
+                    details.edit-question
+                        summary Edit
+                        form(method="post" action=`/questions/${question.id}/edit`).details-inside
+                            label Title
+                            input(type="text" name="title")
+                            input(type="hidden" name="id" value=question.id)
+                            label(for="details") Details
+                            textarea(name="details")
+                            button(type="submit" action=`/questions/${question.id}/edit`) Finish edits
+                    details.add-tags
+                        summary Tags
+                        form(method="post" action="/tag").details-inside
+                            input(type="hidden" name="id" value=question.id)
+                            label(for="name") Enter tag name
+                            input(type="text" name="name" required)
+                            button(type="submit") Submit
+                    form(method="post" action=`/questions/${question.id}/delete`)
+                        button(type="submit" action=`/questions/${question.id}/delete`).delete Delete this question
             ul#answer-list
                 each answer in question.Answers
                     div#question-answers
