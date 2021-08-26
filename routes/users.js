@@ -92,7 +92,7 @@ router.post("/signup", userValidators, csrfProtection, asyncHandler(async(req, r
     avatar: req.body.avatar
   })
 
-  res.redirect("/");
+  loginUser(req, res, user);
 }));
 
 // **ROUTE TO LOG OUT**
