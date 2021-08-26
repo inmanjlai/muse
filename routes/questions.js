@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Question, Answer, User, QTag, Tag } = require('../db/models')//AComment
+const { Question, Answer, User, QTag, Tag, AComment } = require('../db/models')//AComment
 const { Op } = require('sequelize')
 const { asyncHandler, csrfProtection, userValidators, loginValidators, handleValidationErrors } = require('./utils');
 const { requireAuth } = require('./auth');
@@ -47,7 +47,7 @@ router.post('/', requireAuth, asyncHandler(async(req, res, next) => {
 }))
 
 router.get('/:id(\\d+)/', asyncHandler(async(req, res, next) => {
-    const question = await Question.findOne({where: { id: req.params.id}, include: [{model: Answer, include: User}, {model: User}]})
+    const question = await Question.findOne({where: { id: req.params.id}, include: [{model: Answer, include: [{model: User}, {model: AComment}]}, {model: User}]});
 
     const questionTag = await QTag.findAll({
         where: {
@@ -62,8 +62,10 @@ router.get('/:id(\\d+)/', asyncHandler(async(req, res, next) => {
         isMyQuestion = true;
     }
 
+    console.log(question.Answers[0].AComments, "<------------------------------------------------------");
     res.render('question', { question, isMyQuestion, questionTag, allTags});
 }))
+
 
 //delete a question by id
 router.post('/:id(\\d+)/edit', requireAuth, asyncHandler(async(req, res, next) => {
