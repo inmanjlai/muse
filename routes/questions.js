@@ -5,7 +5,7 @@ const { Op } = require('sequelize')
 const { asyncHandler, csrfProtection, userValidators, loginValidators, handleValidationErrors } = require('./utils');
 const { requireAuth } = require('./auth');
 
-//this views all the questions on question page
+//this views all the questions on question page 
 router.get('/', asyncHandler(async(req, res, next) => {
     const questions = await Question.findAll({
         include: [
