@@ -1,0 +1,33 @@
+extends layout.pug 
+append head
+  link(rel="stylesheet", href="/stylesheets/questions.css")
+
+
+block content 
+     div#questions-page
+        h1#question-page-header Results
+        if results.length
+            each result in results
+                if result.Answers.length
+                    each answer in result.Answers
+                        div.question-card-container
+                            div.question-card
+                                a(href=`/users/${result.user_id}`).question-user= `${result.User.username} wants to know `
+                                a(href=`/questions/${result.id}`).question-title= result.title
+                                p= answer.answer
+                            .answer-bar
+                                image(src="images/thumb_up.svg").icon
+                                p.votes= answer.votes
+                                image(src="images/thumb_down.svg").icon
+                                image(src="images/answers.svg").icon
+                else
+                    div.question-card-container
+                        div.question-card
+                            a(href=`/users/${result.user_id}`).question-user= `${result.User.username} wants to know `
+                            a(href=`/questions/${result.id}`).question-title= result.title
+                        .answer-bar
+                            image(src="images/thumb_up.svg").icon
+                            image(src="images/thumb_down.svg").icon
+                            image(src="images/answers.svg").icon
+        else 
+            h2 There were no results that match your search

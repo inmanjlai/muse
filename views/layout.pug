@@ -3,6 +3,7 @@ html
   head
       block head
         title="Express Starter App"
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         link(rel='stylesheet' href='/stylesheets/reset.css')
         link(rel="stylesheet", href="/stylesheets/login.css")
         link(rel="stylesheet", href="/stylesheets/index.css")
@@ -17,8 +18,8 @@ html
         //- img#nav-logo(src="/images/image.png", alt="")
         h1:a(href="/").logo Muse.
       div#search-div
-        //- form#search-form(autocomplete='off')
-        input#search-bar(type='text' name='searchQuery' placeholder='Search here...')
+        form#search-form(autocomplete='off' method="post" action="/search")
+          input#search-bar(type='text' name='searchQuery' placeholder='Search here...')
       if locals.authenticated
         div#nav-auth
           span#nav-greeting Welcome, #{locals.user.username}
