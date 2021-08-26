@@ -2,17 +2,20 @@ extends layout.pug
 
 block content
         div.main-container
-            div.form-container
-                form(action="/users/login", method="post")
-                    h2 Log In
-                    if(errors)
-                        ul
-                            each error in errors
-                                li= error
-                    input(type="hidden", name="_csrf", value=csrfToken)
-                    .form-group
-                        input.form-control(type= "text", id = 'username', name= 'username' placeholder ='Enter Username')
-                        input.form-control(type= "password", id = 'password', name= 'password' placeholder = 'Enter Password')
-                        input.form-button(type="submit" value='Log In')
-                        button.form-button(type: "button" action="/demologin") Demo
-                        a(href="/users/signup").signup Haven't signed up yet?
+            .middle-section
+                .image-container
+                    h1 muse.
+                div.form-container
+                    form(action="/users/login", method="post")
+                        h2 Login
+                        if(errors)
+                            ul
+                                each error in errors
+                                    li= error
+                        input(type="hidden", name="_csrf", value=csrfToken)
+                        .form-group
+                            input.form-control(type= "text", id = 'username', name= 'username' placeholder ='Enter Username')
+                            input.form-control(type= "password", id = 'password', name= 'password' placeholder = 'Enter Password')
+                            input.form-button(type="submit" value='Log In')
+                            button.form-button(type: "button" action="/demologin") Demo
+                            //- a(href="/users/signup").signup Haven't signed up yet?
