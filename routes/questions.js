@@ -48,14 +48,27 @@ router.post('/', requireAuth, asyncHandler(async(req, res, next) => {
 
 router.get('/:id(\\d+)/', asyncHandler(async(req, res, next) => {
     const question = await Question.findOne({where: { id: req.params.id}, include: [{model: Answer, include: User}, {model: User}]})
+    let isMyQuestion = false;
+    if(question.user_id === res.locals.user.id){
+        isMyQuestion = true;
+    }
     console.log(question);
-    res.render('question', { question })
+    res.render('question', { question, isMyQuestion })
 }))
 
 //delete a question by id
-router.delete('/:id(\\d+)/delete', requireAuth, asyncHandler(async(req, res, next) => {
+router.post('/:id(\\d+)/edit', requireAuth, asyncHandler(async(req, res, next) => {
     const question = await Question.findByPk(req.params.id)
-    await question.destory()
+    await question.update({
+        title: req.body.title,
+        details: req.body.details,
+    })
+    res.redirect(`/questions/${req.body.id}`)
+}))
+
+router.post('/:id(\\d+)/delete', requireAuth, asyncHandler(async(req, res, next) => {
+    const question = await Question.findByPk(req.params.id)
+    await question.destroy()
     res.redirect('/questions')
 }))
 
