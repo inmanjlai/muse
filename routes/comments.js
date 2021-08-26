@@ -3,24 +3,27 @@ const router = express.Router();
 const { Question, Answer, User, AComment } = require('../db/models')//AComment
 const { Op } = require('sequelize')
 const { asyncHandler, csrfProtection, userValidators, loginValidators, handleValidationErrors } = require('./utils');
-const { requireAuth } = require('./auth');    
+const { requireAuth } = require('./auth');
 
 
-// New comment on an answer 
+// New comment on an answer
 
-router.post('/a/:id(\\d+)', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
-    const comment = req.body.comment 
+router.post('/', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
+    const comment = await AComment.create({
+        comment: req.body.comment,
+        answer_id: req.body.id,
+        user_id: res.locals.user.id
+    });
 
-    const thisComment = req.params.id.findByPk(req.params.id, {
-        include: Answer
-    }); 
+    res.redirect(`/questions/${req.body.id}`);
 }))
 
-//Update Comment 
+
+//Update Comment
 
 
-//Delete Comment 
+//Delete Comment
 
 
 
-module.exports = router; 
+module.exports = router;
