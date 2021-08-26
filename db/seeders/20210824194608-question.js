@@ -30,7 +30,7 @@ module.exports = {
       user_id: 2,
       createdAt: new Date(),
       updatedAt: new Date()
-    },
+    },    
     {title: "Will Kanye West be the next president?",
       details:"I think it is an amazing idea, he is a generational talent and he will have support from most Americans",
       votes: '400',
@@ -38,21 +38,78 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date()
     },
-    ]);
-    /*
-    title: DataTypes.STRING,
-    details: DataTypes.STRING,
-    votes: DataTypes.INTEGER,
-    user_id: DataTypes.INTEGER
-      Add altering commands here.
-      Return a promise to correctly handle asynchronicity.
+    {title: "What song about vegetables has the most minor chords?",
+    details:"Something that sounds good when played on a guitar. I want to propose to my long term girlfriend who is a cook.",
+    votes: '1260',
+    user_id: 2,
+    createdAt: new Date(),
+    updatedAt: new Date()
+    },
+    {title: "What song about vegetables has the most minor chords?",
+    details:"Something that sounds good when played on a guitar. I want to propose to my long term girlfriend who is a cook.",
+    votes: '1260',
+    user_id: 2,
+    createdAt: new Date(),
+    updatedAt: new Date()
+    }, 
+    {title: "What song about vegetables has the most minor chords?",
+    details:"Something that sounds good when played on a guitar. I want to propose to my long term girlfriend who is a cook.",
+    votes: '1260',
+    user_id: 2,
+    createdAt: new Date(),
+    updatedAt: new Date()
+    },
+    {title: "What song about vegetables has the most minor chords?",
+    details:"Something that sounds good when played on a guitar. I want to propose to my long term girlfriend who is a cook.",
+    votes: '1260',
+    user_id: 2,
+    createdAt: new Date(),
+    updatedAt: new Date()
+    },
+    {title: "What song about vegetables has the most minor chords?",
+    details:"Something that sounds good when played on a guitar. I want to propose to my long term girlfriend who is a cook.",
+    votes: '1260',
+    user_id: 2,
+    createdAt: new Date(),
+    updatedAt: new Date()
+    },
+    {title: "What song about vegetables has the most minor chords?",
+    details:"Something that sounds good when played on a guitar. I want to propose to my long term girlfriend who is a cook.",
+    votes: '1260',
+    user_id: 2,
+    createdAt: new Date(),
+    updatedAt: new Date()
+    },
+    {title: "What song about vegetables has the most minor chords?",
+    details:"Something that sounds good when played on a guitar. I want to propose to my long term girlfriend who is a cook.",
+    votes: '1260',
+    user_id: 2,
+    createdAt: new Date(),
+    updatedAt: new Date()
+    },
+    {title: "What song about vegetables has the most minor chords?",
+    details:"Something that sounds good when played on a guitar. I want to propose to my long term girlfriend who is a cook.",
+    votes: '1260',
+    user_id: 2,
+    createdAt: new Date(),
+    updatedAt: new Date()
+    },
+    {title: "What song about vegetables has the most minor chords?",
+    details:"Something that sounds good when played on a guitar. I want to propose to my long term girlfriend who is a cook.",
+    votes: '1260',
+    user_id: 2,
+    createdAt: new Date(),
+    updatedAt: new Date()
+    },
 
-      Example:
-      return queryInterface.bulkInsert('People', [{
-        name: 'John Doe',
-        isBetaMember: false
-      }], {});
-    */
+    {title: "What song about vegetables has the most minor chords?",
+    details:"Something that sounds good when played on a guitar. I want to propose to my long term girlfriend who is a cook.",
+    votes: '1260',
+    user_id: 2,
+    createdAt: new Date(),
+    updatedAt: new Date()
+    }, 
+    ]);       
   },
 
   down: (queryInterface, Sequelize) => {
