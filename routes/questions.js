@@ -62,7 +62,6 @@ router.get('/:id(\\d+)/', asyncHandler(async(req, res, next) => {
         isMyQuestion = true;
     }
 
-    console.log(question.Answers[0].AComments, "<------------------------------------------------------");
     res.render('question', { question, isMyQuestion, questionTag, allTags});
 }))
 
