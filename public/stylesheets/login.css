@@ -11,10 +11,11 @@ body {
     background: linear-gradient(138deg, rgba(173,204,245,1) 0%, rgba(254,153,255,1) 100%);
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 8% 92%;
+    grid-template-rows: 60px auto 60px;
     grid-template-areas:
     "navbar"
-    "main";
+    "main"
+    "footer";
 }
 
 .main-container {
@@ -120,4 +121,8 @@ body {
     color: rgb(59, 112, 192);
     margin-top: 2rem;
     margin-bottom:2rem;
+}
+
+footer {
+    grid-area: footer;
 }
