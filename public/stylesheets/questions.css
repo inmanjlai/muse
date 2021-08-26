@@ -27,11 +27,11 @@
 .question-card-container {
     border: 1px solid #1d1d1d;
     background-color: #44475a;
-    margin: 0.2rem;
+    margin: 1rem;
     /* padding: 1rem; */
     width: 100%;
     border-radius: 2.5px;
-    /* box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2); */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
 }
 
 .question-title {

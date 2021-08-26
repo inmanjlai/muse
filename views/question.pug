@@ -17,7 +17,7 @@ block content
                                 button.tag= tag.name
             a(href=`/users/${question.user_id}`)
             h1#question-title= `${question.title}`
-            p= `Asked by ${question.User.username}`
+            p.italic= `Asked by ${question.User.username}`
             h1#question-details= `${question.details}`
             .user-controls
                 details.answer-question
@@ -53,8 +53,9 @@ block content
                     div#question-answers
                         p= `Answer by ${answer.User.username}`
                         h2.answer-details= `${answer.answer}`
-                            if answer.AComments.length
-                                each comment in answer.AComments
+                        if answer.AComments.length
+                            each comment in answer.AComments
+                                .answer-comment
                                     p= comment.comment
         //-                     if(locals.user.id === answer.user_id)
         //-                         a.answer-edit-link(href=`/answers/${answer.id}/edit`) Edit this Answer
