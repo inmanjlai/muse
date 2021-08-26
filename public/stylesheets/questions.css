@@ -5,6 +5,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%;
+
 }
 
 #questions-page {
@@ -13,7 +15,7 @@
     align-items: center;
     flex-direction: column;
     width: 90%;
-    height: 100%;
+    padding: 1rem;
 }
 
 #question-page-header {
@@ -46,6 +48,7 @@
 }
 
 #new-question-button, #no-question-button {
+    text-decoration: none;
     padding: 1rem 1.5rem;
     margin: 1rem;
     background: rgb(152,251,152);
@@ -75,6 +78,29 @@
     display: flex;
     /* gap: 1rem; */
     border-top: 1px solid #1d1d1d;
-    padding: 0.2rem;
+    padding: 0.2rem 0.5rem;
     background-color: #6272a4;
+    align-items: center;
+    gap: 1rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.icon {
+    filter: invert(1);
+    transition: 0.3s;
+    cursor: pointer;
+    /* fill: white; */
+}
+
+.icon:hover {
+    filter: invert(0);
+    border-radius: 2.5px;
+}
+
+.votes {
+    font-weight: bold;
 }

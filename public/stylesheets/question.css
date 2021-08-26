@@ -13,7 +13,7 @@
     padding: 1rem;
     border-radius: 2.5px;
     width: 90%;
-    height: auto;
+    height: max-content;
 }
 
 #question-title {
