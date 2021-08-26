@@ -1,0 +1,58 @@
+#newquestion{
+    display: inline-flex;
+    flex-direction: column;
+    background-color: #44475a;
+    padding: 1rem;
+    border-radius: 10px;
+    width: 70%;
+    height: 70%;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.25);
+    max-width: 800px;
+}
+
+.body-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+#newquestion label{
+    padding: 1rem 0;
+    font-size: 1.5rem;
+    color: #ff79c6;
+    font-weight: bold;
+}
+#newquestion input{
+    border: none;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+#newquestion textarea{
+    border: none;
+    padding: 0.5rem;
+    font-size: 1rem;
+    resize: none;
+    height: 300px;
+}
+
+#newquestion button {
+    margin: 0.5rem 0rem;
+    color: #ff79c6;
+    font-size: 1rem;
+    background-color: #282a36;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem;
+    height: max-content;
+    cursor: pointer;
+    transition: color 0.3s;
+    font-weight: bold;
+}
+
+#newquestion button:hover {
+    color: palegreen;
+}
