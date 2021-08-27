@@ -8,15 +8,15 @@ const { requireAuth } = require('./auth');
 
 // New comment on an answer
 
-router.post('/', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
+router.post('/', requireAuth, asyncHandler(async (req, res) => {
     const comment = await AComment.create({
         comment: req.body.comment,
-        answer_id: req.body.id,
+        answer_id: req.body.answer_id,
         user_id: res.locals.user.id
     });
 
-    res.redirect(`/questions/${req.body.id}`);
-}))
+    res.redirect(`/questions/${req.body.question_id}`);
+}));
 
 
 //Update Comment
