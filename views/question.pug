@@ -55,8 +55,16 @@ block content
                         p.italic= `Answer by ${answer.User.username}`
                         h2.answer-details= `${answer.answer}`
                         if locals.authenticated
-                            if answer.user_id === locals.user.id
-                                .user-controls
+                            .user-controls
+                                details.add-comment
+                                    summary Comment
+                                    form(method="post" action="/comments").details-inside
+                                        input(type="hidden" name="question_id" value=question.id)
+                                        input(type="hidden" name="answer_id" value=answer.id)
+                                        label(for="comment") Comment
+                                        textarea(name="comment")
+                                        button(type="submit") Submit
+                                if answer.user_id === locals.user.id
                                     details.edit-question
                                         summary Edit
                                         form(method="post" action=`/answers/${answer.id}/edit`).details-inside
@@ -71,21 +79,3 @@ block content
                             each comment in answer.AComments
                                 .answer-comment
                                     p= comment.comment
-        //-                     if(locals.user.id === answer.user_id)
-        //-                         a.answer-edit-link(href=`/answers/${answer.id}/edit`) Edit this Answer
-        //-                         a.answer-delete-link(href=`/answers/${answer.id}/delete`) Delete this Answer
-
-        //-                 ul#answer-comment-list
-        //-                     each aComment in answer.AnswerComments
-        //-                         li.question-comment-li
-        //-                             textarea.comment-details-editor(name="commentDetailsEditor")
-        //-                             h4= `${aComment.comment} --- ${aComment.User.username}`
-        //-                                 if(userId === aComment.user_id)
-        //-                                     a.comment-editor(href=`/comments/a/${aComment.id}/edit`) Edit this comment
-        //-                                     a.comment-delete(href=`/comments/a/${aComment.id}/delete`) Delete this comment
-        //-                                     a.comment-done-editing-link(href=`/comments/a/${aComment.id}`) Done Editing Comment
-        //-                     form(class='new-answer-comment' method='post' action=`/answers/${answer.id}/comments`)
-        //-                         input(type='hidden' name= '_csrf' value= csrfToken)
-        //-                         +field('' , 'comment', '', 'textarea', true)
-        //-                         if userId !== 0
-        //-                             button.add-comment-button(type='submit') Add A Comment
