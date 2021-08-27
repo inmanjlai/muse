@@ -30,7 +30,9 @@
     margin: 1rem;
     /* padding: 1rem; */
     width: 100%;
-    border-radius: 2.5px;
+    border-radius: 5px;
+    /* border-top-right-radius: 5px;
+    border-top-left-radius: 5px; */
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
 }
 
@@ -74,7 +76,7 @@
 }
 
 .answer-bar {
-    display: flex;
+    display: none;
     /* gap: 1rem; */
     border-top: 1px solid #1d1d1d;
     padding: 0.2rem 0.5rem;
