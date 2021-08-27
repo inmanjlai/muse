@@ -44,6 +44,7 @@
     font-size: 1.5rem;
     padding-bottom: 1rem;
     border-bottom: 2px solid #282a36;
+    margin-bottom: 1rem;
 }
 
 #question-answers p {
@@ -83,6 +84,7 @@
 .details-inside {
     margin: 0.5rem 0;
     padding: 1rem;
+    border: 2px solid #282a36;
     border-radius: 10px;
     background-color: #6272a4;
     position: absolute;
@@ -150,5 +152,9 @@
     padding: 1rem;
     margin: 0.5rem 0;
     border-radius: 2.5px;
+}
+
+#question-answers p.italic {
+    color: palegreen;
 }
 
