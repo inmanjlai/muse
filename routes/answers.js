@@ -19,10 +19,10 @@ router.post('/', requireAuth, asyncHandler(async(req, res, next) => {
 
 
 
-router.delete('/:id(\\d+)/delete', requireAuth, asyncHandler(async(req, res, next) => {
+router.post('/:id(\\d+)/delete', requireAuth, asyncHandler(async(req, res, next) => {
     const answer = await Answer.findByPk(req.params.id)
-    await answer.destory()
-    res.redirect(`/questions/${req.params.id}`);
+    await answer.destroy()
+    res.redirect(`/questions/${req.body.id}`);
 }))
 
 router.post('/:id(\\d+)/edit', requireAuth, asyncHandler(async(req, res, next) => {
