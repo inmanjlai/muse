@@ -47,7 +47,20 @@ router.post('/', requireAuth, asyncHandler(async(req, res, next) => {
 }))
 
 router.get('/:id(\\d+)/', asyncHandler(async(req, res, next) => {
-    const question = await Question.findOne({where: { id: req.params.id}, include: [{model: Answer, include: [{model: User}, {model: AComment}]}, {model: User}]});
+    const question = await Question.findOne({
+        where: { id: req.params.id},
+        include: [
+            {
+                model: Answer,
+                include: [
+                    {model: User}, {model: AComment, include: User}
+                ]
+            },
+            {
+                model: User
+            }
+        ]
+    });
 
     const questionTag = await QTag.findAll({
         where: {

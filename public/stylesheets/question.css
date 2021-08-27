@@ -11,10 +11,11 @@
     flex-direction: column;
     background-color: #44475a;
     padding: 1rem;
-    border-radius: 2.5px;
+    border-radius: 5px;
     width: 90%;
     height: max-content;
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5)
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+    max-width: 1200px;
 }
 
 #question-title {
@@ -31,13 +32,14 @@
 }
 
 #question-answers {
+    display: flex;
+    flex-direction: column;
     background-color: #6272a4;
     padding: 1rem;
-    border-radius: 2.5px;
+    border-radius: 5px;
     margin: 1rem 0;
     color: #f8f8f2;
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5)
-
 }
 
 #question-answers h2 {
@@ -47,7 +49,7 @@
     margin-bottom: 1rem;
 }
 
-#question-answers p {
+#question-answers > p {
     color: black;
 }
 
@@ -64,11 +66,12 @@
     border-radius: 5px;
     color: white;
     cursor: pointer;
+    font-size: 0.75rem;
 }
 
 .user-controls .delete {
     color: #ff79c6;
-    font-size: 1rem;
+    font-size: 0.75rem;
     background-color: #282a36;
     outline: none;
     border: none;
@@ -152,9 +155,38 @@
     background-color: #44475a;
     padding: 1rem;
     margin: 0.5rem 0;
-    border-radius: 2.5px;
+    border-radius: 5px;
+    width: 60%;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6);
 }
 
 #question-answers p.italic {
     color: palegreen;
+}
+
+.answer-comment p {
+    color: white;
+}
+
+.owned {
+    align-self: flex-end;
+}
+
+.owned p.underline {
+    border-bottom: 2px solid #282a36;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.user-avatar img {
+    width: 30px;
+    border-radius: 50%;
+}
+
+.user-details {
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
 }
