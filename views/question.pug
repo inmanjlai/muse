@@ -53,6 +53,13 @@ block content
                     div#question-answers
                         p= `Answer by ${answer.User.username}`
                         h2.answer-details= `${answer.answer}`
+                        .user-controls
+                            details.add-comment
+                                summary Comment
+                                form(method="post" action="/comment").details-inside
+                                    label(for="comment") Comment
+                                    textarea(name="comment")
+                                    button(type="submit") Submit
                         if answer.AComments.length
                             each comment in answer.AComments
                                 .answer-comment
