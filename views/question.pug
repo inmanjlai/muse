@@ -10,7 +10,7 @@ block content
     div#question-page
         div#individual-question
             div.tag-list
-                if questionTag.length
+                if questionTag
                     each QTag in questionTag
                         each tag in allTags
                             if QTag.tag_id === tag.id
