@@ -103,8 +103,8 @@ router.get("/logout", requireAuth, asyncHandler(async(req, res) => {
 
 // demo user login
 router.post("/demologin", csrfProtection, asyncHandler(async(req, res) => {
-  const user = await User.findOne({ where: {username: "Demo User"}});
-  loginUser(req, res, user)
+  const demouser = await User.findOne({ where: {username: "demo"}});
+  loginUser(req, res, demouser)
 }))
 
 module.exports = router;
