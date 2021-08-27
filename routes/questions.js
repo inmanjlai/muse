@@ -58,8 +58,10 @@ router.get('/:id(\\d+)/', asyncHandler(async(req, res, next) => {
     const allTags = await Tag.findAll();
 
     let isMyQuestion = false;
-    if(question.user_id === res.locals.user.id){
-        isMyQuestion = true;
+    if(res.locals.user){
+        if(question.user_id === res.locals.user.id){
+            isMyQuestion = true;
+        }
     }
 
     res.render('question', { question, isMyQuestion, questionTag, allTags});
