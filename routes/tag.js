@@ -9,7 +9,7 @@ router.post('/', asyncHandler(async(req, res) => {
     });
 
     const association = await QTag.create({
-        question_id: req.body.id,
+        question_id: req.body.id,  
         tag_id: tag.id
     })
 

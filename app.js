@@ -12,6 +12,7 @@ const usersRouter = require('./routes/users');
 const searchRouter = require('./routes/search');
 const answersRouter = require('./routes/answers');
 const tagRouter = require('./routes/tag');
+const commentRouter = require('./routes/comments');
 const { secret } = require("./config");
 const { restoreUser, requireAuth } = require('./routes/auth');
 
@@ -50,6 +51,7 @@ app.use('/questions', questionRouter);
 app.use('/search', searchRouter);
 app.use('/answers', answersRouter);
 app.use('/tag', tagRouter);
+app.use('/comments', commentRouter);
 
 
 // catch 404 and forward to error handler
@@ -69,3 +71,5 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
+
+// hello world

@@ -6,10 +6,10 @@
     grid-template-rows: 1fr;
     grid-template-areas: "links search auth";
     padding: 1rem;
-    background-color: rgba(60,60,60,1);
+    background-color: #44475a;
     align-items: center;
     justify-items: start;
-    border-bottom: 3px solid violet;
+    border-bottom: 3px solid #ff79c6;
     align-content: center;
 }
 
@@ -17,7 +17,7 @@
     margin-left: 2rem;
     font-size: 2rem;
     font-family: 'Sarina', cursive;
-    color: violet;
+    color: #ff79c6;
     transition: 0.5s;
 }
 
@@ -73,13 +73,14 @@
     text-decoration: none;
     padding: 0.7rem 0.7rem;
     border-radius: 5px;
-    color: violet;
+    color: white;
     font-weight: bold;
-    border: 2px solid violet;
+    border: 2px solid #ff79c6;
     transition: color 0.3s, background-color 0.3s, border-color 0.3s;
 }
 
-.loginButton:hover{    
+.loginButton:hover{
+    color: #44475a;    
     background-color: palegreen;
     border-color: palegreen;
 }
@@ -92,6 +93,6 @@
 }
 
 .loginButton { 
-    color: #464646;
-    background-color: violet;
+    color: white;
+    background-color: #ff79c6;
 }
