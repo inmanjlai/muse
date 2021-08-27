@@ -53,6 +53,15 @@ block content
                     div#question-answers
                         p= `Answer by ${answer.User.username}`
                         h2.answer-details= `${answer.answer}`
+                        if isMyQuestion
+                            .user-controls
+                                details.edit-question
+                                    summary Edit
+                                    form(method="post" action=`/questions/${question.id}/edit`).details-inside
+                                        label Answer
+                                        input(type="text" name="title")
+                                        input(type="hidden" name="id" value=question.id)
+                                        Finish edits
                         if answer.AComments.length
                             each comment in answer.AComments
                                 .answer-comment

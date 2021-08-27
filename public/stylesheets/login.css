@@ -54,9 +54,11 @@ body {
     font-family: 'Sarina', cursive;
 }
 .form-container {
+    /* width: 100%; */
     padding: 4rem;
-    display: inline-flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 3fr 1fr;
     align-items: center;
     justify-content: center;
 }
@@ -70,7 +72,6 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    flex-basis: 1;
 }
 
 .form-group label {
@@ -175,3 +176,18 @@ footer {
     }
 
 }
+
+.demo-form {
+    /* padding: 1rem 0; */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    /* justify-self: flex-start; */
+}
+.demo-form input {
+    /* margin: 0 1rem; */
+    width: 100%;
+    background: rgb(252,255,81);
+    background: linear-gradient(132deg, rgba(252,255,81,1) 0%, rgba(255,153,56,1) 100%);
+}
+
