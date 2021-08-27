@@ -21,9 +21,22 @@ router.post('/', requireAuth, asyncHandler(async (req, res) => {
 
 //Update Comment
 
+router.post('/:id(\\d+)/edit', requireAuth, asyncHandler(async(req, res, next) => {
+    const comment = await AComment.findByPk(req.params.id)
+    await comment.update({
+        comment: req.body.comment,
+    })
+    res.redirect(`/questions/${req.body.id}`)
+}))
+
 
 //Delete Comment
 
+router.post('/:id(\\d+)/delete', requireAuth, asyncHandler(async(req, res, next) => {
+    const comment = await AComment.findByPk(req.params.id)
+    await comment.destroy()
+    res.redirect(`/questions/${req.body.id}`);
+}))
 
 
 module.exports = router;
