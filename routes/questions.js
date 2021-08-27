@@ -55,6 +55,13 @@ router.get('/:id(\\d+)/', asyncHandler(async(req, res, next) => {
         }
     });
 
+    let answer;
+
+    if(res.locals.user){
+        answer = await Answer.findOne({where: { question_id: question.id, user_id: res.locals.user.id },})
+        // console.log(answer, "<-------------------------------------------")
+    }
+
     const allTags = await Tag.findAll();
 
     let isMyQuestion = false;

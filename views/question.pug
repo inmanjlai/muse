@@ -38,7 +38,7 @@ block content
                             input(type="hidden" name="id" value=question.id)
                             label(for="details") Details
                             textarea(name="details")
-                            button(type="submit" action=`/questions/${question.id}/edit`) Finish edits
+                            button(type="submit") Finish edits
                     details.add-tags
                         summary Tags
                         form(method="post" action="/tag").details-inside
@@ -47,12 +47,23 @@ block content
                             input(type="text" name="name" required)
                             button(type="submit") Submit
                     form(method="post" action=`/questions/${question.id}/delete`)
-                        button(type="submit" action=`/questions/${question.id}/delete`).delete Delete this question
+                        button(type="submit").delete Delete this question
             ul#answer-list
                 each answer in question.Answers
                     div#question-answers
-                        p= `Answer by ${answer.User.username}`
+                        p.italic= `Answer by ${answer.User.username}`
                         h2.answer-details= `${answer.answer}`
+                        if answer.user_id === locals.user.id
+                            .user-controls
+                                details.edit-question
+                                    summary Edit
+                                    form(method="post" action=`/answers/${answer.id}/edit`).details-inside
+                                        label Answer
+                                        input(type="text" name="answer")
+                                        input(type="hidden" name="id" value=question.id)
+                                        button(type="submit") Finish edits
+                                form(method="post" action=`/answers/${answer.id}/delete`)
+                                    button(type="submit").delete Delete this answer
                         if answer.AComments.length
                             each comment in answer.AComments
                                 .answer-comment

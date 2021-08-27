@@ -25,4 +25,12 @@ router.delete('/:id(\\d+)/delete', requireAuth, asyncHandler(async(req, res, nex
     res.redirect(`/questions/${req.params.id}`);
 }))
 
+router.post('/:id(\\d+)/edit', requireAuth, asyncHandler(async(req, res, next) => {
+    const answer = await Answer.findByPk(req.params.id)
+    await answer.update({
+        answer: req.body.answer,
+    })
+    res.redirect(`/questions/${req.body.id}`)
+}))
+
 module.exports = router;
