@@ -2,7 +2,7 @@ doctype html
 html
   head
       block head
-        title="Express Starter App"
+        title="Muse"
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         link(rel='stylesheet' href='/stylesheets/reset.css')
         link(rel="stylesheet", href="/stylesheets/login.css")
@@ -17,7 +17,7 @@ html
       a#nav-home-link(href='/')
         //- img#nav-logo(src="/images/image.png", alt="")
         h1:a(href="/").logo muse.
-      form#search-form(autocomplete='off' method="post" action="/search")
+      form#search-form(autocomplete='on' method="post" action="/search")
         input#search-bar(type='text' name='searchQuery' placeholder='🔎 Search here...')
       if locals.authenticated
         div#nav-auth
