@@ -21,7 +21,7 @@ body {
 .body-container {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 60% auto;
+    grid-template-rows: auto;
 }
 
 .main-container {
