@@ -18,13 +18,19 @@ body {
     "footer";
 }
 
+.body-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 60% auto;
+}
+
 .main-container {
-    height: 100%;
+    height: auto;
     width: 100%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    grid-area:main;
+    /* grid-area:main; */
 }
 .middle-section {
     width: 80%;

@@ -16,6 +16,11 @@ router.post('/', asyncHandler(async(req, res) => {
     res.redirect(`/questions/${req.body.id}`);
 }));
 
+router.post("/:id(\\d+)/delete", asyncHandler(async(req, res)=>{
+    const tag = await Tag.findByPk(req.params.id);
+    await tag.destroy();
+}))
+
 
 
 

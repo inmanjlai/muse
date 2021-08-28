@@ -30,6 +30,7 @@
     margin: 1rem;
     /* padding: 1rem; */
     width: 100%;
+    max-width: 1200px;
     border-radius: 5px;
     /* border-top-right-radius: 5px;
     border-top-left-radius: 5px; */

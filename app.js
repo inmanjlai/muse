@@ -50,7 +50,7 @@ app.use('/users', usersRouter);
 app.use('/questions', questionRouter);
 app.use('/search', searchRouter);
 app.use('/answers', answersRouter);
-app.use('/tag', tagRouter);
+app.use('/tags', tagRouter);
 app.use('/comments', commentRouter);
 
 

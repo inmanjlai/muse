@@ -5,6 +5,7 @@ append head
     script(src="/javascripts/question.js" type="module" defer)
     link(rel="stylesheet", href="/stylesheets/question.css")
     link(rel="stylesheet", href="/stylesheets/questions.css")
+    script(src="/javascripts/DynamicScripts.js" type="module" defer) 
 
 block content
     div#question-page
@@ -14,7 +15,15 @@ block content
                     each QTag in questionTag
                         each tag in allTags
                             if QTag.tag_id === tag.id
-                                button.tag= tag.name
+                                .tag-div
+                                    form(action="/search/tag" method="post")
+                                        button(type="submit").tag= tag.name
+                                        input(type="hidden" value=tag.id name="tag-id").tag-id
+                                        input(type="hidden" value=tag.name name="name")
+                                    if locals.authenticated 
+                                        each question in tag.Questions
+                                            if question.User.id === locals.user.id
+                                                img(src="/images/delete.svg", alt="didnt work").tag-image
             a(href=`/users/${question.user_id}`)
             h1#question-title= `${question.title}`
             p.italic= `Asked by ${question.User.username}`
@@ -42,7 +51,7 @@ block content
                             button(type="submit") Finish edits
                     details.add-tags
                         summary Tags
-                        form(method="post" action="/tag").details-inside
+                        form(method="post" action="/tags").details-inside
                             input(type="hidden" name="id" value=question.id)
                             label(for="name") Enter tag name
                             input(type="text" name="name" required)

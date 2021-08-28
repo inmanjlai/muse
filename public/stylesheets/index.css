@@ -26,6 +26,7 @@ footer {
     align-items: center;
     justify-content: center;
     border-top: 3px solid #ff79c6;
+    grid-area: footer;
 }
 
 footer a {
@@ -33,3 +34,4 @@ footer a {
     text-decoration: none;
     font-weight: bold;
 }
+
