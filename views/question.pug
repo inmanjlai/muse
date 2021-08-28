@@ -77,28 +77,29 @@ block content
                                         button(type="submit").delete Delete this answer
                         if answer.AComments.length
                             each comment in answer.AComments
-                                if comment.user_id !== locals.user.id
+                                if locals.authenticated
+                                    if comment.user_id === locals.user.id
+                                        .answer-comment.owned
+                                            .user-details
+                                                .user-avatar
+                                                    img(src=comment.User.avatar)
+                                                p.italic= `${comment.User.username} says`
+                                            p.underline= comment.comment
+                                            .user-controls
+                                                details.edit-comment
+                                                    summary Edit
+                                                    form(method="post" action=`/comments/${comment.id}/edit`).details-inside
+                                                        label Comment
+                                                        input(type="text" name="comment")
+                                                        input(type="hidden" name="id" value=question.id)
+                                                        button(type="submit") Finish edits
+                                                form(method="post" action=`/comments/${comment.id}/delete`)
+                                                    input(type="hidden" name="id" value=question.id)
+                                                    button(type="submit").delete Delete this comment 
+                                else 
                                     .answer-comment
                                         .user-details
                                             .user-avatar
                                                 img(src=comment.User.avatar)
                                             p.italic= `${comment.User.username} says`
                                         p= comment.comment
-                                if comment.user_id === locals.user.id
-                                    .answer-comment.owned
-                                        .user-details
-                                            .user-avatar
-                                                img(src=comment.User.avatar)
-                                            p.italic= `${comment.User.username} says`
-                                        p.underline= comment.comment
-                                        .user-controls
-                                            details.edit-comment
-                                                summary Edit
-                                                form(method="post" action=`/comments/${comment.id}/edit`).details-inside
-                                                    label Comment
-                                                    input(type="text" name="comment")
-                                                    input(type="hidden" name="id" value=question.id)
-                                                    button(type="submit") Finish edits
-                                            form(method="post" action=`/comments/${comment.id}/delete`)
-                                                input(type="hidden" name="id" value=question.id)
-                                                button(type="submit").delete Delete this comment
