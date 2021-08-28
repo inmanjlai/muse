@@ -12,7 +12,8 @@ window.addEventListener("DOMContentLoaded", (e) => {
             
             // Then we want to remove it from the DOM
             console.log("we got here")
-            let tagDiv = tagId.parentElement;
+            let form = tagId.parentElement;
+            let tagDiv = form.parentElement;
             tagDiv.remove();
             
             // Sending a fetch request to the endpoint of /tags/:id/delete
