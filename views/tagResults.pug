@@ -1,0 +1,32 @@
+extends layout.pug 
+append head
+  link(rel="stylesheet", href="/stylesheets/questions.css")
+
+
+block content 
+     div#questions-page
+        h1#question-page-header Results
+        if results.length
+            each result in results
+                each question in result.Questions
+                    if question.Answers.length
+                        each answer in question.Answers
+                            div.question-card-container
+                                div.question-card
+                                    a(href=`/questions/${question.id}`).question-user.italic= `${question.User.username} wants to know `
+                                    a(href=`/questions/${question.id}`).question-title= question.title
+                                    p= answer.answer
+                                .answer-bar
+                                    image(src="images/thumb_up.svg").icon
+                                    p.votes= answer.votes
+                                    image(src="images/thumb_down.svg").icon
+                                    image(src="images/answers.svg").icon
+                    else
+                        div.question-card-container
+                            div.question-card
+                                a(href=`/questions/${question.id}`).question-user.italic= `${question.User.username} wants to know `
+                                a(href=`/questions/${question.id}`).question-title= question.title
+                            .answer-bar
+                                image(src="images/thumb_up.svg").icon
+                                image(src="images/thumb_down.svg").icon
+                                image(src="images/answers.svg").icon

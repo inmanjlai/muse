@@ -139,16 +139,44 @@
 }
 
 .tag {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.tag:hover {
+    text-decoration: underline;
+}
+
+.tag-div {
     background-color: #6272a4;
     border: 2px solid rgba(0, 0, 0, 0.5);
     padding: 5px 10px;
     border-radius: 5px;
     transition: background-color 0.2s;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: 0.3s;
 }
 
-.tag:hover {
+.tag-div img {
+    width: 15px;
+    opacity: 0;
+    transition: filter 0.3s;
+}
+
+.tag-div:hover {
     background-color: #4c5777;
+}
+
+.tag-div:hover img {
+    opacity: 1;
+}
+
+.tag-div img:hover {
+    filter: invert();
 }
 
 .answer-comment {

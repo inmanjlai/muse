@@ -12,7 +12,7 @@ block content
                     each answer in result.Answers
                         div.question-card-container
                             div.question-card
-                                a(href=`/users/${result.user_id}`).question-user= `${result.User.username} wants to know `
+                                a(href=`/questions/${result.id}`).question-user.italic= `${result.User.username} wants to know `
                                 a(href=`/questions/${result.id}`).question-title= result.title
                                 p= answer.answer
                             .answer-bar
@@ -23,7 +23,7 @@ block content
                 else
                     div.question-card-container
                         div.question-card
-                            a(href=`/users/${result.user_id}`).question-user= `${result.User.username} wants to know `
+                            a(href=`/questions/${result.id}`).question-user.italic= `${result.User.username} wants to know `
                             a(href=`/questions/${result.id}`).question-title= result.title
                         .answer-bar
                             image(src="images/thumb_up.svg").icon
