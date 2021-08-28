@@ -16,7 +16,7 @@ block content
                 each answer in question.Answers
                      div.question-card-container
                         div.question-card
-                            a(href=`/users/${question.user_id}`).question-user.italic= `${question.User.username} wants to know `
+                            a(href=`/questions/${question.id}`).question-user.italic= `${question.User.username} wants to know `
                             a(href=`/questions/${question.id}`).question-title= question.title
                             p= answer.answer
                         .answer-bar

@@ -58,7 +58,9 @@ router.post("/login", loginValidators, csrfProtection, asyncHandler(async(req, r
   const user = await User.findOne({where: {username: req.body.username}});
 
   if (user === null) {
-    res.render("login", { csrfToken: req.csrfToken(), errors});
+    const err = "That username and password combination is not valid";
+    errors.push(err);
+    return res.render("login", { csrfToken: req.csrfToken(), errors});
   }
     // USE BCRYPT'S COMPARE METHOD TO CHECK IF THE SUPPLIED PASSWORD IS THE SAME
     // -> AS THE HASHED PASSWORD WE HAVE STORED IN THE DATABASE

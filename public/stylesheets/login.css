@@ -58,10 +58,27 @@ body {
     padding: 4rem;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 3fr 1fr;
+    grid-template-rows: auto 1fr;
     align-items: center;
     justify-content: center;
+    min-height: 450px;
+    max-width: 307px;
+    max-height: 650px;
 }
+
+.form-container ul {
+    max-height: 100px;
+    overflow-y: scroll;
+    color: red;
+    background-color: white;
+}
+
+.form-container ul li {
+    margin: 0.3rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 2px solid black;
+}
+
 .form-container h2 {
     margin-bottom: 2rem;
 }
@@ -102,7 +119,7 @@ body {
     background: linear-gradient(125deg, rgba(152,251,152,1) 0%, rgba(16,195,117,1) 100%);
     padding: 0.7rem 2rem;
     width: 100%;
-    margin: 1rem;
+    /* margin: 1rem; */
     border-radius: 10px;
     color: white;
     font-weight: bold;
@@ -186,6 +203,7 @@ footer {
 }
 .demo-form input {
     /* margin: 0 1rem; */
+    margin: 0;
     width: 100%;
     background: rgb(252,255,81);
     background: linear-gradient(132deg, rgba(252,255,81,1) 0%, rgba(255,153,56,1) 100%);

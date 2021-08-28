@@ -77,7 +77,14 @@ block content
                                         button(type="submit").delete Delete this answer
                         if answer.AComments.length
                             each comment in answer.AComments
-                                if locals.authenticated
+                                if !locals.authenticated
+                                    .answer-comment
+                                        .user-details
+                                            .user-avatar
+                                                img(src=comment.User.avatar)
+                                            p.italic= `${comment.User.username} says`
+                                        p= comment.comment
+                                else 
                                     if comment.user_id === locals.user.id
                                         .answer-comment.owned
                                             .user-details
@@ -96,10 +103,12 @@ block content
                                                 form(method="post" action=`/comments/${comment.id}/delete`)
                                                     input(type="hidden" name="id" value=question.id)
                                                     button(type="submit").delete Delete this comment 
-                                else 
-                                    .answer-comment
-                                        .user-details
-                                            .user-avatar
-                                                img(src=comment.User.avatar)
-                                            p.italic= `${comment.User.username} says`
-                                        p= comment.comment
+                                    else
+                                        .answer-comment
+                                            .user-details
+                                                .user-avatar
+                                                    img(src=comment.User.avatar)
+                                                p.italic= `${comment.User.username} says`
+                                            p= comment.comment
+
+
