@@ -34,8 +34,18 @@ router.get('/', asyncHandler(async(req, res) => {
     const users = await User.findAll();
     return res.render("users", { users })
   }
-  res.redirect("/users/login");
+  res.redirect("/users/login");  
 }));
+
+// GET USER PROFILE PAGE   
+router.get('/:id(\\d+)', asyncHandler(async (req, res) => {    
+  const userId = parseInt(req.params.id, 10);  
+  const UserProfile = await User.findByPk(parseInt(user_id, 10));
+  const questions = await Question.findAll({ where: { user_id }, include: Answer});
+  const answers = await Answer.findAll({ where: { user_id }, include: Question });
+  res.render('userpage', { UserProfile, questions, answers });        
+}))
+
 
 // **GET SIGN IN PAGE**
 router.get("/login", csrfProtection, asyncHandler(async(req, res) => {
