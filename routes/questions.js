@@ -77,7 +77,7 @@ router.get('/:id(\\d+)/', asyncHandler(async(req, res, next) => {
 
     const allTags = await Tag.findAll({ include: { model: Question, include: User} });
 
-    console.log(allTags[0].Questions[0].User.id, "<-------------------------------------")
+    // console.log(allTags[0].Questions[0].User.id, "<-------------------------------------")
 
     let isMyQuestion = false;
     if(res.locals.user){
