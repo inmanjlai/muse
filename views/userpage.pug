@@ -1,0 +1,50 @@
+extends layout.pug 
+
+append head
+    link(rel='stylesheet' href='/stylesheets/userpage.css')
+
+block content
+    h1= UserProfile.username
+    div#user-div
+        div#user-card
+            img#profile-pic(src=UserProfile.avatar width='100')
+        div#user-details
+            ul#user-details-list
+                li#user-name= `${UserProfile.username}`
+                li#user-email= UserProfile.email
+                li#user-join-date= `Member Since - ${new Date(UserProfile.createdAt).toDateString()}`
+    div#question-div
+        if user && user.id === UserProfile.id
+            h2 Your Questions
+                span.counter= ` (${questions.length})`
+        else
+            h2= `${UserProfile.username}'s Questions`
+                span.counter= ` (${questions.length})`
+        if questions.length
+            ul#question-list
+                each q in questions
+                        li.user-question: a(href=`/questions/${q.id}`)= q.title
+                            span= ` ${q.Answers.length} answer(s)`
+        else
+            if user && user.id === UserProfile.id   
+                a#askAQuestion(href="/questions/new") Ask your first question here!
+            else 
+                p= `${UserProfile.username} hasn't asked any questions yet!`
+    div#answer-div
+        if user && user.id === UserProfile.id
+            h2 Your Answers
+                span.counter= ` (${answers.length})`
+        else 
+            h2= `${UserProfile.username}'s Answers`
+                span.counter= ` (${answers.length})`
+        if answers.length
+            ul#answer-list
+                each a in answers
+                        li.user-answer= a.answer
+                            span=' for: '
+                                a(href=`/questions/${a.Question.id}` title=a.Question.title)= `${a.Question.title.split(' ')[0]}...`
+        else
+            if user && user.id === UserProfile.id   
+                a#answerQuestion(href="/questions") Start Answering Questions Here!
+            else 
+                p= `${UserProfile.firstName} hasn't answered any questions yet!`
