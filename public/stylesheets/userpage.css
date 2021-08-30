@@ -1,0 +1,140 @@
+body {
+    min-height: 100vh;
+    /* width: 100vw; */
+    font-family: Arial, Helvetica, sans-serif;
+    background: rgb(173,204,245);
+    background: #282a36;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 60px auto 60px;
+    grid-template-areas:
+    "navbar"
+    "main"
+    "footer";
+}
+
+.body-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    align-items: center;
+    justify-items: center;
+}
+
+#user-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #44475a;
+    padding: 1.5rem;
+    flex-direction: column;
+    border-radius: 5px;
+}
+#user-div ul {
+    list-style: none;
+    text-align: center;
+}
+
+#user-div li {
+    font-size: 1.2rem;
+    margin: 0.3rem;
+}
+
+#question-div {
+    background-color: #44475a;
+    padding: 1.5rem;
+    border-radius: 5px;
+
+}
+
+#answer-div {
+    border: 1px solid #1d1d1d;
+    background-color: #44475a;
+    margin: 1rem;
+    /* padding: 1rem; */
+    width: 100%;
+    max-width: 1200px;
+    border-radius: 5px;
+    /* border-top-right-radius: 5px;
+    border-top-left-radius: 5px; */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+    max-width: 1200px;
+    width: 80%;
+
+}
+
+#answer-div ul {
+    list-style: none;
+    text-align: center;
+}
+
+.question-card {
+    border: 1px solid #1d1d1d;
+    background-color: #44475a;
+    margin: 1rem;
+    /* padding: 1rem; */
+    width: 100%;
+    max-width: 1200px;
+    border-radius: 5px;
+    /* border-top-right-radius: 5px;
+    border-top-left-radius: 5px; */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+    max-width: 1200px;
+    width: 80%;
+}
+
+.question-card ul {
+    list-style: none;
+}
+
+.question-card a {
+    text-decoration: none;
+    /* font-size: 1.2rem; */
+    font-weight: bold;
+}
+
+.question-card a:hover {
+    text-decoration: underline;
+}
+
+.question-title {
+    font-size: larger;
+    text-decoration: none;
+    margin: 1rem 0rem;
+    font-weight: bold;
+    color: #ff79c6;
+    padding-left: 1rem;
+}
+
+.question-card-container p {
+    color: #f8f8f2;
+}
+
+.question-card {
+    padding: 1rem;
+}
+
+.question-user {
+    display: block;
+    color: white;
+    text-decoration: none;
+}
+
+.counter, h2 {
+    font-size: 1.5rem;
+    text-align: center;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    color: palegreen;
+    font-weight: bold;
+}
+
+.user-answer {
+    font-weight: bold;
+    color: palegreen;
+}

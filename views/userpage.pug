@@ -13,7 +13,7 @@ block content
                 li#user-name= `${UserProfile.username}`
                 li#user-email= UserProfile.email
                 li#user-join-date= `Member Since - ${new Date(UserProfile.createdAt).toDateString()}`
-    div#question-div
+    div.question-card
         if user && user.id === UserProfile.id
             h2 Your Questions
                 span.counter= ` (${questions.length})`
@@ -23,7 +23,7 @@ block content
         if questions.length
             ul#question-list
                 each q in questions
-                        li.user-question: a(href=`/questions/${q.id}`)= q.title
+                        li.question-title: a(href=`/questions/${q.id}`)= q.title
                             span= ` ${q.Answers.length} answer(s)`
         else
             if user && user.id === UserProfile.id   

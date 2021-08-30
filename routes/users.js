@@ -5,7 +5,7 @@ const csrfProtection = csrf({cookie: true});
 const bcrypt = require("bcryptjs")
 const { userValidators, loginValidators, handleValidationErrors} = require("./utils");
 
-const { User } = require("../db/models");
+const { User, Question, Answer } = require("../db/models");
 const { restoreUser, requireAuth } = require('./auth');
 const { validationResult } = require('express-validator');
 
@@ -40,9 +40,9 @@ router.get('/', asyncHandler(async(req, res) => {
 // GET USER PROFILE PAGE   
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {    
   const userId = parseInt(req.params.id, 10);  
-  const UserProfile = await User.findByPk(parseInt(user_id, 10));
-  const questions = await Question.findAll({ where: { user_id }, include: Answer});
-  const answers = await Answer.findAll({ where: { user_id }, include: Question });
+  const UserProfile = await User.findByPk(parseInt(userId, 10));
+  const questions = await Question.findAll({ where: { user_id: userId }, include: Answer});
+  const answers = await Answer.findAll({ where: { user_id: userId }, include: Question });
   res.render('userpage', { UserProfile, questions, answers });        
 }))
 
