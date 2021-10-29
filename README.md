@@ -46,29 +46,7 @@ Muse is a web application that serves as a question and answer fourm based aroun
 - able to filter questions by tags 
 
 ***
-
-### Code Snippets
-#### Example 2 
-
-temp 
-
-````javascript
-
-    //sample code 
-
-````
-
-#### Example 2
-
-temp 
-
-````javascript
-   
-   // sample code 
-    
-          
-    
-````  
+ 
 ### Wiki Pages
 #### [API Documentation](https://github.com/ocahsa/muse/wiki/API-Documentation) 
 #### [Database Schema](https://github.com/ocahsa/muse/wiki/Database-Schema)  
@@ -78,8 +56,3 @@ temp
 #### [Frontend Routes](https://github.com/ocahsa/muse/wiki/Front-End-Documentation)  
 #### [User Stories](https://github.com/ocahsa/muse/wiki/User-Stories)   
 
-***
-
-### Future Goals
-- Import a more detailed question library     
-- 
