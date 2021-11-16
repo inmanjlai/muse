@@ -17,9 +17,12 @@ body {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 60% auto;
+    /* height: 100vh; */
 }
 
 .main-container {
+    position: absolute;
+    top: 67%;
     height: auto;
     width: 100%;
     display: inline-flex;
