@@ -28,5 +28,6 @@ html
           a(href='/users/signup').signupButton Sign Up
     .body-container
       block content
-    footer
-      a(href="#top") Return to top
+    if questions && !UserProfile
+      footer
+        a(href="#top") Return to top
