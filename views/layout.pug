@@ -21,7 +21,7 @@ html
         input#search-bar(type='text' name='searchQuery' placeholder='🔎 Search here...')
       if locals.authenticated
         div#nav-auth
-          a(href=`users/${locals.user.id}`)#nav-greeting Welcome, #{locals.user.username}
+          a(href=`/users/${locals.user.id}`)#nav-greeting Welcome, #{locals.user.username}
           a(href='/users/logout').logoutButton Logout
       else
         div#nav-auth
